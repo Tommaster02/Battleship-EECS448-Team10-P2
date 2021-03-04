@@ -8,6 +8,7 @@ using namespace std;
 void TwoPlayerGame()
 {
 	int mode = 1;
+	int leader = 0;
 	int shipNum = 0;
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
@@ -37,7 +38,7 @@ void TwoPlayerGame()
 
 	while (true)
 	{
-		e1.P1Attack(mode);
+		e1.P1Attack(mode, leader);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -46,7 +47,7 @@ void TwoPlayerGame()
 			break;
 		}
 
-		e1.P2Attack(mode);
+		e1.P2Attack(mode, leader);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -90,6 +91,7 @@ void EasyMode()
 void OnePlayerGame()
 {
 	int mode = 2;
+	int leader = 0;
 	cout << "------------------------------------------------------\n";
 	cout << "1 Player Battleship (Player vs. AI)\n\n\n";
 	cout << "Select dificulty below:\n";
@@ -139,7 +141,6 @@ void SpecialGame()
 	cout << "2) Battleship Brandon\n";
 	cout << "3) Captain Wilhelm\n";
 	cout << "4) Commander Tom\n";
-
 	int leader = 0;
 	int error2 = 0;
 
@@ -205,7 +206,7 @@ void SpecialGame()
 
 	while (true)
 	{
-		e1.P1Attack(mode);
+		e1.P1Attack(mode, leader);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -214,7 +215,7 @@ void SpecialGame()
 			break;
 		}
 
-		e1.P2Attack(mode);
+		e1.P2Attack(mode, leader);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";

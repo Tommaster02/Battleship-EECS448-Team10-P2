@@ -146,7 +146,7 @@ void Executive::P2Place()
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
-void Executive::P1Attack(int mode)
+void Executive::P1Attack(int mode, int leader)
 {
 	int row;
 	int col;
@@ -169,7 +169,10 @@ void Executive::P1Attack(int mode)
 		cout << "\nSelect Column letter: ";
 
 		col = inputAlphabet('A', 'J');
-
+		if (mode == 3)
+		{
+		AbilityPrompt(leader);
+		}
 		cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
@@ -209,7 +212,7 @@ void Executive::P1Attack(int mode)
 	}
 }
 
-void Executive::P2Attack(int mode)
+void Executive::P2Attack(int mode, int leader)
 {
 	int row;
 	int col;
@@ -360,16 +363,16 @@ void Executive::AIPlacement()
 	cout << "AI Ships have been placed." << endl;
 }
 
-void LaserH(int row)
+void Executive::LaserH(int row)
 {
 
 }
-void LaserV(int col)
+void Executive::LaserV(int col)
 {
 
 }
 
-void AbilityPrompt(int leader)
+void Executive::AbilityPrompt(int leader)
 {
 	int error = 0;
 	string useability = "";
