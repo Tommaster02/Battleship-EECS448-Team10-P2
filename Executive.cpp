@@ -2,10 +2,7 @@
 #include"Board.h"
 #include "string"
 #include <cctype>
-<<<<<<< HEAD
 #include <ctime>
-=======
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
 using namespace std;
 
 Executive::Executive(int num)
@@ -135,18 +132,8 @@ void Executive::P2Place()
 
 			P2Board2.placeShips(row1, col1, row2, col2, m_shipNum - count);
 			P2Board2.printBoard();
-<<<<<<< HEAD
-<<<<<<< HEAD
 			std::cout << "\n----------------------------------------\n";
 			std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
-=======
-			cout << "\n----------------------------------------\n";
-			cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n";
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
-=======
-			cout << "\n----------------------------------------\n";
-			cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n";
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
 
 			count--;//count=5
 		}
@@ -344,8 +331,7 @@ int Executive::inputAlphabet(char begin, char end) {
 	return (v - begin) + 1;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 void Executive::AIPlacement()
 {
 	bool placing = true;
@@ -371,10 +357,9 @@ void Executive::AIPlacement()
 		}
 	}
 	P2Board2.printBoard();
-	std::cout << "AI Ships have been placed." << std::endl;
-=======
-=======
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
+	cout << "AI Ships have been placed." << endl;
+}
+
 void LaserH(int row)
 {
 
@@ -433,8 +418,4 @@ void AbilityPrompt(int leader)
 			cout << "Not a valid choice! Please input 'y' or 'n'\n";
 		}
 	} while (error == 1);
-<<<<<<< HEAD
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
-=======
->>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
 }
