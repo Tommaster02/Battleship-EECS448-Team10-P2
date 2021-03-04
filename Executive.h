@@ -86,5 +86,9 @@ public:
 	* @return int - Returns valid user input
 	**/
 	int inputAlphabet(char begin, char end);
+
+	void LaserH(int row); //Horizontal Laser attack
+	void LaserV(int col); //Vertical Laser attack
+	void AbilityPrompt(int leader);
 };
 #endif
