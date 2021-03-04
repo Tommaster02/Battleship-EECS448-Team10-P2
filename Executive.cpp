@@ -146,7 +146,7 @@ void Executive::P2Place()
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
-void Executive::P1Attack()
+void Executive::P1Attack(int mode)
 {
 	int row;
 	int col;
@@ -209,7 +209,7 @@ void Executive::P1Attack()
 	}
 }
 
-void Executive::P2Attack()
+void Executive::P2Attack(int mode)
 {
 	int row;
 	int col;

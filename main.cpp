@@ -7,6 +7,7 @@ using namespace std;
 
 void TwoPlayerGame()
 {
+	int mode = 1;
 	int shipNum = 0;
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
@@ -36,7 +37,7 @@ void TwoPlayerGame()
 
 	while (true)
 	{
-		e1.P1Attack();
+		e1.P1Attack(mode);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -45,7 +46,7 @@ void TwoPlayerGame()
 			break;
 		}
 
-		e1.P2Attack();
+		e1.P2Attack(mode);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -88,6 +89,7 @@ void EasyMode()
 
 void OnePlayerGame()
 {
+	int mode = 2;
 	cout << "------------------------------------------------------\n";
 	cout << "1 Player Battleship (Player vs. AI)\n\n\n";
 	cout << "Select dificulty below:\n";
@@ -129,6 +131,7 @@ void OnePlayerGame()
 
 void SpecialGame()
 {
+	int mode = 3;
 	cout << "------------------------------------------------------\n";
 	cout << "2 Player *Special* Battleship (Player vs. Player)\n\n\n";
 	cout << "Player 1:\nSelect a leader & their special ability:\n";
@@ -146,22 +149,22 @@ void SpecialGame()
 		if (leader == 1)
 		{
 			cout << "You selected Admiral Ankeey!\n\n Special ability: ";
-			cout << "";
+			cout << "Laser";
 		}
 		else if (leader == 2)
 		{
 			cout << "You selected Battleship Brandon!\n\n Special ability: ";
-			cout << "";
+			cout << "Shotgun";
 		}
 		else if (leader == 3)
 		{
 			cout << "You selected Captain Wilhelm!\n\n Special ability: ";
-			cout << "";
+			cout << "Rain of Death";
 		}
 		else if (leader == 4)
 		{
 			cout << "You selected Commander Tom!\n\n Special ability: ";
-			cout << "";
+			cout << "Ring of Fire";
 		}
 		else
 		{
@@ -202,7 +205,7 @@ void SpecialGame()
 
 	while (true)
 	{
-		e1.P1Attack();
+		e1.P1Attack(mode);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -211,7 +214,7 @@ void SpecialGame()
 			break;
 		}
 
-		e1.P2Attack();
+		e1.P2Attack(mode);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
