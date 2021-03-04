@@ -112,7 +112,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 		return false;
 	}
 
-	if (x1 - 1 == x2 - 1)
+	if (x1 == x2)
 	{
 		int collen = abs(y2 - y1);
 
@@ -138,7 +138,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 
 	}
 	//Vertical
-	else if (y1 - 1 == y2 - 1)
+	else if (y1 == y2)
 	{
 		int rowlen = abs(x2 - x1);
 

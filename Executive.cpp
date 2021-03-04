@@ -336,15 +336,24 @@ void Executive::AIPlacement()
 {
 	bool placing = true;
 	int count = m_shipNum;
+	srand(time(0));
 
 	while (placing)
 	{
-		srand(time(0));
 		row1 = (rand() % 10) + 1;
-		row2 = (rand() % 10) + 1;
 		col1 = (rand() % 10) + 1;
-		col2 = (rand() % 10) + 1;
+		int orientation = rand() % 2;
 
+		if (orientation == 0)
+		{
+			row2 = row1 + (m_shipNum - count);
+			col2 = col1;
+		}
+		else
+		{
+			col2 = col1 + (m_shipNum - count);
+			row2 = row1;
+		}
 		bool check1xN = P2Board2.checkForShips(row1, col1, row2, col2, count);
 		if (check1xN == true)
 		{
@@ -355,8 +364,8 @@ void Executive::AIPlacement()
 		{
 			placing = false;
 		}
+		P2Board2.printBoard();
 	}
-	P2Board2.printBoard();
 	cout << "AI Ships have been placed." << endl;
 }
 
