@@ -86,11 +86,18 @@ public:
 	  * @return int - Returns valid user input
 	  **/
 	int inputAlphabet(char begin, char end);
+<<<<<<< HEAD
 	/**
 	  * Randomly populates the AI's board
 	  *
 	  * @return Nothing
 	  **/
 	void AIPlacement();
+=======
+
+	void LaserH(int row); //Horizontal Laser attack
+	void LaserV(int col); //Vertical Laser attack
+	void AbilityPrompt(int leader);
+>>>>>>> ea683a1e391737d58e943bb1c9cc5bb62fcb8bc9
 };
 #endif
