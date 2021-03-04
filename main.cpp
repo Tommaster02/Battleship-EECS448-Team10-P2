@@ -137,7 +137,56 @@ void SpecialGame()
 			error2 = 1;
 		}
 	} while (error2 == 1);
+	cout << endl << "-----------------------------------------\n\n\n\n\n";
+	int shipNum = 0;
 
+	while (true) {
+		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
+		if (cin >> shipNum)
+		{
+			if (shipNum < 7 && shipNum > 0)
+			{
+				break;
+			}
+			else
+			{
+				cout << "The input range is not valid!\n";
+			}
+		}
+		else
+		{
+			cout << "input not a number!" << endl;
+			cin.clear();
+			cin.ignore();
+		}
+	}
+	cout << "\nThe number of ships are:" << shipNum << "\n\n";
+
+	Executive e1(shipNum);
+	e1.P1Place();
+	e1.P2Place();
+
+	while (true)
+	{
+		e1.P1Attack();
+		if (e1.P1Won())
+		{
+			cout << "\n----------------------------------------\n";
+			cout << "------------PLAYER 1 HAS WON------------";
+			cout << "\n----------------------------------------\n";
+			break;
+		}
+
+		e1.P2Attack();
+		if (e1.P2Won())
+		{
+			cout << "\n----------------------------------------\n";
+			cout << "------------PLAYER 2 HAS WON------------";
+			cout << "\n----------------------------------------\n";
+			break;
+		}
+
+	}
 }
 
 void Rules()
