@@ -4,7 +4,8 @@
 #include "Executive.h"
 #include "Board.h"
 using namespace std;
-int main()
+
+void PrintMenu()
 {
 	int choice = 0;
 	int error = 0;
@@ -72,32 +73,38 @@ int main()
 
 		else if (choice == 2)
 		{
-			int difficulty = 0;
-			int error1 = 0;
 			cout << "------------------------------------------------------\n";
 			cout << "1 Player Battleship (Player vs. AI)\n\n\n";
 			cout << "Select dificulty below:\n";
 			cout << "1) Easy\n";
 			cout << "2) Medium\n";
 			cout << "3) Hard\n";
+			int difficulty = 0;
+			int error1 = 0;
 			do
 			{
 				cin >> difficulty;
 				if (difficulty == 1)
 				{
+					cout << "---------\n";
+					cout << "Easy Mode\n";
 					cout << "COMING SOON!\n";
 				}
 				else if (difficulty == 2)
 				{
+					cout << "-----------\n";
+					cout << "Medium Mode\n";
 					cout << "COMING SOON!\n";
 				}
 				else if (difficulty == 3)
 				{
+					cout << "---------\n";
+					cout << "Hard Mode\n";
 					cout << "COMING SOON!\n";
 				}
 				else
 				{
-					cout << "Not a valid choice! Please insert an integer (1-4)\n";
+					cout << "Not a valid choice! Please insert an integer (1-3)\n";
 					error1 = 1;
 				}
 			} while (error1 == 1);
@@ -106,16 +113,61 @@ int main()
 		}
 		else if (choice == 3)
 		{
-			cout << "COMING SOON!\n";
+			cout << "------------------------------------------------------\n";
+			cout << "2 Player *Special* Battleship (Player vs. Player)\n\n\n";
+			cout << "Player 1:\nSelect a leader & their special ability:\n";
+			cout << "1) Admiral Ankeey\n";
+			cout << "2) Battleship Brandon\n";
+			cout << "3) Captain Wilhelm\n";
+			cout << "4) Commander Tom\n";
+
+			int leader = 0;
+			int error2 = 0;
+
+			do
+			{
+				cin >> leader;
+				if (leader == 1)
+				{
+					cout << "You selected Admiral Ankeey!\n\n Special ability: ";
+					cout << "";
+				}
+				else if (leader == 2)
+				{
+					cout << "You selected Battleship Brandon!\n\n Special ability: ";
+					cout << "";
+				}
+				else if (leader == 3)
+				{
+					cout << "You selected Captain Wilhelm!\n\n Special ability: ";
+					cout << "";
+				}
+				else if (leader == 4)
+				{
+					cout << "You selected Commander Tom!\n\n Special ability: ";
+					cout << "";
+				}
+				else
+				{
+					cout << "Not a valid choice! Please insert an integer (1-4)\n";
+					error2 = 1;
+				}
+			} while (error2 == 1);
+
 		}
 		else if (choice == 4)
 		{
 			cout << "COMING SOON!\n";
 		}
 		else if (choice < 1 || choice > 4)
-		 {
-			 cout << "Not a valid choice! Please insert an integer (1-4)\n";
-			 error = 1;
-		 }
+		{
+			cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			error = 1;
+		}
 	} while (error == 1);
+}
+
+int main()
+{
+	PrintMenu();
 }
