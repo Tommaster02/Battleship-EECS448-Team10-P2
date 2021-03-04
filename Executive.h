@@ -36,12 +36,12 @@ public:
 	* @return Nothing
 	**/
 	void P1Place();
-  /**
-	* Print out a board that player 2 can place their ships in order of 1X1, 1X2, 1X3 and etc.
-	*
-	* @param None
-	* @return Nothing
-	**/
+	/**
+	  * Print out a board that player 2 can place their ships in order of 1X1, 1X2, 1X3 and etc.
+	  *
+	  * @param None
+	  * @return Nothing
+	  **/
 	void P2Place();
 
 	/**
@@ -50,11 +50,11 @@ public:
 	* @return Nothing
 	**/
 	void P1Attack();
-  /**
-	* Player 2 attacks Player 1 ships and updates Player 2 attack board to let player see if they hit or miss
-	*
-	* @return Nothing
-	**/
+	/**
+	  * Player 2 attacks Player 1 ships and updates Player 2 attack board to let player see if they hit or miss
+	  *
+	  * @return Nothing
+	  **/
 	void P2Attack();
 
 	/**
@@ -63,11 +63,11 @@ public:
 	* @return Bool - True for win, false to continue
 	**/
 	bool P1Won();
-  /**
-	*  Determine if Player 2 Won.
-  *
-	* @return Bool - True for win, false to continue
-	**/
+	/**
+	  *  Determine if Player 2 Won.
+	*
+	  * @return Bool - True for win, false to continue
+	  **/
 	bool P2Won();
 
 	/**
@@ -78,13 +78,19 @@ public:
 	* @return int - Returns valid user input
 	**/
 	int inputNumber(int begin, int end);
-  /**
-	* Takes in user input, it must a letter that will be converted to a number
-	*
-	* @param char - Beggining of valid input range
-	* @param char - End valid input range
-	* @return int - Returns valid user input
-	**/
+	/**
+	  * Takes in user input, it must a letter that will be converted to a number
+	  *
+	  * @param char - Beggining of valid input range
+	  * @param char - End valid input range
+	  * @return int - Returns valid user input
+	  **/
 	int inputAlphabet(char begin, char end);
+	/**
+	  * Randomly populates the AI's board
+	  *
+	  * @return Nothing
+	  **/
+	void AIPlacement();
 };
 #endif

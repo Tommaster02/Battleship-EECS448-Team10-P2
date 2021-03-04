@@ -25,7 +25,7 @@ void TwoPlayerGame()
 		{
 			cout << "input not a number!" << endl;
 			cin.clear();
-			cin.ignore();
+			cin.ignore(1000, '\n');
 		}
 	}
 	cout << "\nThe number of ships are:" << shipNum << "\n\n";
@@ -56,6 +56,36 @@ void TwoPlayerGame()
 	}
 }
 
+void EasyMode()
+{
+	int shipNum = 0;
+	while (true) {
+		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
+		if (cin >> shipNum)
+		{
+			if (shipNum < 7 && shipNum > 0)
+			{
+				break;
+			}
+			else
+			{
+				cout << "The input range is not valid!\n";
+			}
+		}
+		else
+		{
+			cout << "input not a number!" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+	cout << "\nThe number of ships are:" << shipNum << "\n\n";
+
+	Executive e1(shipNum);
+	e1.P1Place();
+	e1.AIPlacement();
+}
+
 void OnePlayerGame()
 {
 	cout << "------------------------------------------------------\n";
@@ -73,7 +103,7 @@ void OnePlayerGame()
 		{
 			cout << "---------\n";
 			cout << "Easy Mode\n";
-			cout << "COMING SOON!\n";
+			EasyMode();
 		}
 		else if (difficulty == 2)
 		{
@@ -90,6 +120,8 @@ void OnePlayerGame()
 		else
 		{
 			cout << "Not a valid choice! Please insert an integer (1-3)\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
 			error1 = 1;
 		}
 	} while (error1 == 1);
@@ -134,6 +166,8 @@ void SpecialGame()
 		else
 		{
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
 			error2 = 1;
 		}
 	} while (error2 == 1);
@@ -180,6 +214,8 @@ void PrintMenu()
 		else if (choice < 1 || choice > 4)
 		{
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
 			error = 1;
 		}
 	} while (error == 1);
