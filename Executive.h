@@ -92,6 +92,13 @@ public:
 	  * @return Nothing
 	  **/
 	void AIPlacement();
+	/**
+	  * Allows the AI to attack based on the difficulty. 
+	  *
+	  * @parm int - Gives the difficulty
+	  * @return Nothing
+	  **/
+	void AIAttack(int difficulty);
 
 	void LaserH(int row); //Horizontal Laser attack
 	void LaserV(int col); //Vertical Laser attack

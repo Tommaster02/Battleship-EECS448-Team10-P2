@@ -442,6 +442,56 @@ void Executive::AbilityPrompt(int leader)
 	} while (error == 1);
 }
 
-void clrscn() {
+void Executive::clrscn() {
 	;
+}
+
+void Executive::AIAttack(int difficulty)
+{
+	int row;
+	int col;
+	bool attack = true;
+	if (difficulty == 1)
+	{
+
+		while (attack)
+		{
+			row = rand() % 10 + 1;
+			col = rand() % 10 + 1;
+			while (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+			{
+				row = rand() % 10 + 1;
+				col = rand() % 10 + 1;
+			}
+			if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
+			{
+				P2AttackBoard.update(row - 1, col - 1, 'H');
+				P1Board1.update(row - 1, col - 1, 'H');
+				if (P1Board1.isSunk(row - 1, col - 1))
+				{
+					P1Board1.sinkShip();
+				}
+
+				if (P1Board1.getShipsLeft() == 0)
+				{
+					player2Won = true;
+				}
+			}
+			else
+			{
+				P2AttackBoard.update(row - 1, col - 1, 'M');
+			}
+			cout << "This is what the AI has tried to hit" << endl;
+			P2AttackBoard.printBoard();
+			attack = false;
+		}
+	}
+	else if (difficulty == 2)
+	{
+
+	}
+	else if (difficulty == 3)
+	{
+
+	}
 }

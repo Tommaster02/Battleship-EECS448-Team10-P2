@@ -58,9 +58,12 @@ void TwoPlayerGame()
 	}
 }
 
-void EasyMode()
+void Play(int d)
 {
 	int shipNum = 0;
+	int mode = 1;
+	int leader = 0;
+	int difficulty = d;
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
 		if (cin >> shipNum)
@@ -86,6 +89,28 @@ void EasyMode()
 	Executive e1(shipNum);
 	e1.P1Place();
 	e1.AIPlacement();
+
+	while (true)
+	{
+		e1.P1Attack(mode, leader);
+		if (e1.P1Won())
+		{
+			cout << "\n----------------------------------------\n";
+			cout << "------------PLAYER 1 HAS WON------------";
+			cout << "\n----------------------------------------\n";
+
+			break;
+		}
+
+		e1.AIAttack(difficulty);
+		if (e1.P2Won())
+		{
+			cout << "\n----------------------------------------\n";
+			cout << "------------AI HAS WON------------";
+			cout << "\n----------------------------------------\n";
+			break;
+		}
+	}
 }
 
 void OnePlayerGame()
@@ -107,7 +132,7 @@ void OnePlayerGame()
 		{
 			cout << "---------\n";
 			cout << "Easy Mode\n";
-			EasyMode();
+			Play(difficulty);
 		}
 		else if (difficulty == 2)
 		{
