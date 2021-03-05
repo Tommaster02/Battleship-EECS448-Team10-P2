@@ -431,3 +431,7 @@ void Executive::AbilityPrompt(int leader)
 		}
 	} while (error == 1);
 }
+
+void clrscn() {
+	;
+}

@@ -229,7 +229,45 @@ void SpecialGame()
 
 void Rules()
 {
-	cout << "COMING SOON!\n";
+	int error0 = 0;
+	int choice0 = 0;
+	char c;
+	cout << "WHICH MODE WOULD YOU LIKE HELP WITH? (1-3) \n";
+	cout << "1) 2 Player Battleship (Player vs. Player)\n";
+	cout << "2) 1 Player Battleship (Player vs. AI)\n";
+	cout << "3) 2 Player *Special* Battleship (Player vs. Player)\n";
+	do
+	{
+		cin >> choice0;
+		if (choice0 == 1)
+		{
+			cout << "player vs player.txt \n";
+			cout << "Would you like help with another gamemode?\n";
+			c = getchar();
+			if (c == 'y'||'Y'){
+				Rules();
+			}
+			else if (c == 'n'||'N') {
+				cout << "Returning you to the main menu\n";
+				return;
+			}
+		}
+		else if (choice0 == 2)
+		{
+			cout << "player vs AI.txt";
+		}
+		else if (choice0 == 3)
+		{
+			cout << "player vs player special mode.txt";
+		}
+		else if (choice0 < 1 || choice0 > 3)
+		{
+			cout << "Not a valid choice! Please insert an integer (1-3)\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
+			error0 = 1;
+		}
+	} while (error0 == 1);
 }
 
 
