@@ -343,8 +343,8 @@ void Executive::AIPlacement()
 
 	while (placing)
 	{
-		row1 = rand() % (10 + 1);
-		col1 = rand() % (10 + 1);
+		row1 = rand() % 10 + 1;
+		col1 = rand() % 10 + 1;
 		int orientation = rand() % 2;
 
 		if (orientation == 0)
