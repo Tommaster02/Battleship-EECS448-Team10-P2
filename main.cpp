@@ -256,10 +256,30 @@ void Rules()
 		else if (choice0 == 2)
 		{
 			cout << "player vs AI.txt";
+			cout << "Would you like help with another gamemode? (Enter N to exit from Help menu) \n";
+			cin >> c;
+			if ((c == "N") || (c == "n")) {
+				cout << "Returning you to the main menu\n";
+				return;
+			}
+			else {
+				Rules();
+				return;
+			}
 		}
 		else if (choice0 == 3)
 		{
 			cout << "player vs player special mode.txt";
+			cout << "Would you like help with another gamemode? (Enter N to exit from Help menu) \n";
+			cin >> c;
+			if ((c == "N") || (c == "n")) {
+				cout << "Returning you to the main menu\n";
+				return;
+			}
+			else {
+				Rules();
+				return;
+			}
 		}
 		else if (choice0 < 1 || choice0 > 3)
 		{
