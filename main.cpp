@@ -322,7 +322,6 @@ void PrintMenu()
 		else if (choice == 4)
 		{
 			Rules();
-			error = 1;
 		}
 		else if (choice < 1 || choice > 4)
 		{

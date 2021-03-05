@@ -343,8 +343,8 @@ void Executive::AIPlacement()
 
 	while (placing)
 	{
-		row1 = (rand() % 10) + 1;
-		col1 = (rand() % 10) + 1;
+		row1 = rand() % (10 + 1);
+		col1 = rand() % (10 + 1);
 		int orientation = rand() % 2;
 
 		if (orientation == 0)
@@ -357,7 +357,17 @@ void Executive::AIPlacement()
 			col2 = col1 + (m_shipNum - count);
 			row2 = row1;
 		}
+
 		bool check1xN = P2Board2.checkForShips(row1, col1, row2, col2, count);
+		if ((col1 + (m_shipNum - count) + 1 > 10) && (orientation == 1))
+		{
+			check1xN = false;
+		}
+		else if ((row1 + (m_shipNum - count) + 1 > 10) && (orientation == 0))
+		{
+			check1xN = false;
+		}
+
 		if (check1xN == true)
 		{
 			P2Board2.placeShips(row1, col1, row2, col2, m_shipNum - count);
