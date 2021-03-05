@@ -231,24 +231,24 @@ void Rules()
 {
 	int error0 = 0;
 	int choice0 = 0;
-	char c;
-	cout << "WHICH MODE WOULD YOU LIKE HELP WITH? (1-3) \n";
-	cout << "1) 2 Player Battleship (Player vs. Player)\n";
-	cout << "2) 1 Player Battleship (Player vs. AI)\n";
-	cout << "3) 2 Player *Special* Battleship (Player vs. Player)\n";
+	string c;
 	do
 	{
+		cout << "WHICH MODE WOULD YOU LIKE HELP WITH? (1-3) \n";
+		cout << "1) 2 Player Battleship (Player vs. Player)\n";
+		cout << "2) 1 Player Battleship (Player vs. AI)\n";
+		cout << "3) 2 Player *Special* Battleship (Player vs. Player)\n";
 		cin >> choice0;
 		if (choice0 == 1)
 		{
 			cout << "player vs player.txt \n";
 			cout << "Would you like help with another gamemode? (Enter N to exit from Help menu) \n";
 			cin >> c;
-			if (c == 'n' || 'N') {
+			if ((c == "N")||(c =="n")) {
 				cout << "Returning you to the main menu\n";
 				return;
 			}
-			else {
+			else{
 				Rules();
 				return;
 			}
