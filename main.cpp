@@ -242,13 +242,14 @@ void Rules()
 		if (choice0 == 1)
 		{
 			cout << "player vs player.txt \n";
-			cout << "Would you like help with another gamemode?\n";
-			c = getchar();
-			if (c == 'y'||'Y'){
-				Rules();
-			}
-			else if (c == 'n'||'N') {
+			cout << "Would you like help with another gamemode? (Enter N to exit from Help menu) \n";
+			cin >> c;
+			if (c == 'n' || 'N') {
 				cout << "Returning you to the main menu\n";
+				return;
+			}
+			else {
+				Rules();
 				return;
 			}
 		}
@@ -275,16 +276,16 @@ void PrintMenu()
 {
 	int error = 0;
 	int choice = 0;
-	cout << "------------------------------------------------------\n";
-	cout << "Welcome to Battleship!\n\n\n";
-	cout << "Pick one of the game modes or a list of rules below:\n";
-	cout << "1) 2 Player Battleship (Player vs. Player)\n";
-	cout << "2) 1 Player Battleship (Player vs. AI)\n";
-	cout << "3) 2 Player *Special* Battleship (Player vs. Player)\n";
-	cout << "4) Rules of Modes\n";
-	cout << "------------------------------------------------------\n";
 	do
 	{
+		cout << "------------------------------------------------------\n";
+		cout << "Welcome to Battleship!\n\n\n";
+		cout << "Pick one of the game modes or a list of rules below:\n";
+		cout << "1) 2 Player Battleship (Player vs. Player)\n";
+		cout << "2) 1 Player Battleship (Player vs. AI)\n";
+		cout << "3) 2 Player *Special* Battleship (Player vs. Player)\n";
+		cout << "4) Rules of Modes\n";
+		cout << "------------------------------------------------------\n";
 		cin >> choice;
 		if (choice == 1)
 		{
@@ -301,6 +302,7 @@ void PrintMenu()
 		else if (choice == 4)
 		{
 			Rules();
+			error = 1;
 		}
 		else if (choice < 1 || choice > 4)
 		{
