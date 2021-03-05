@@ -5,6 +5,7 @@
 #include "Board.h"
 using namespace std;
 
+
 void TwoPlayerGame()
 {
 	int mode = 1;
@@ -64,6 +65,7 @@ void Play(int d)
 	int mode = 1;
 	int leader = 0;
 	int difficulty = d;
+	struct Point p1 { 0, 0, 0 };
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
 		if (cin >> shipNum)
@@ -102,7 +104,7 @@ void Play(int d)
 			break;
 		}
 
-		e1.AIAttack(difficulty);
+		e1.AIAttack(difficulty, p1);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -138,13 +140,13 @@ void OnePlayerGame()
 		{
 			cout << "-----------\n";
 			cout << "Medium Mode\n";
-			cout << "COMING SOON!\n";
+			Play(difficulty);
 		}
 		else if (difficulty == 3)
 		{
 			cout << "---------\n";
 			cout << "Hard Mode\n";
-			cout << "COMING SOON!\n";
+			Play(difficulty);
 		}
 		else
 		{

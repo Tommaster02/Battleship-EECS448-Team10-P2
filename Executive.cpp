@@ -446,14 +446,13 @@ void Executive::clrscn() {
 	;
 }
 
-void Executive::AIAttack(int difficulty)
+Point Executive::AIAttack(int difficulty, Point previous)
 {
-	int row;
-	int col;
+	int row = 0;
+	int col = 0;
 	bool attack = true;
 	if (difficulty == 1)
 	{
-
 		while (attack)
 		{
 			row = rand() % 10 + 1;
@@ -488,10 +487,96 @@ void Executive::AIAttack(int difficulty)
 	}
 	else if (difficulty == 2)
 	{
+		if (previous.h == 0)
+		{
+			while (attack)
+			{
+				row = rand() % 10 + 1;
+				col = rand() % 10 + 1;
+				while (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+				{
+					row = rand() % 10 + 1;
+					col = rand() % 10 + 1;
+				}
+				if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
+				{
+					P2AttackBoard.update(row - 1, col - 1, 'H');
+					P1Board1.update(row - 1, col - 1, 'H');
+					if (P1Board1.isSunk(row - 1, col - 1))
+					{
+						P1Board1.sinkShip();
+						previous.h = 0;
+					}
 
+					if (P1Board1.getShipsLeft() == 0)
+					{
+						player2Won = true;
+					}
+					previous.h = 1;
+				}
+				else
+				{
+					P2AttackBoard.update(row - 1, col - 1, 'M');
+				}
+				cout << "This is what the AI has tried to hit" << endl;
+				P2AttackBoard.printBoard();
+				attack = false;
+			}
+		}
+		else
+		{
+			row = previous.x + 1;
+			col = previous.y;
+			int i = 0;
+			while (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+			{
+				if (i == 0)
+				{
+					row = previous.x;
+					col = previous.y + 1;
+				}
+				else if (i == 1)
+				{
+					row = previous.x;
+					col = previous.y - 1;
+				}
+				else if (i == 2)
+				{
+					row = previous.x - 1;
+					col = previous.y;
+				}
+				i++;
+			}
+			if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
+			{
+				P2AttackBoard.update(row - 1, col - 1, 'H');
+				P1Board1.update(row - 1, col - 1, 'H');
+				if (P1Board1.isSunk(row - 1, col - 1))
+				{
+					P1Board1.sinkShip();
+					previous.h = 0;
+				}
+
+				if (P1Board1.getShipsLeft() == 0)
+				{
+					player2Won = true;
+				}
+				previous.h = 1;
+			}
+			else
+			{
+				P2AttackBoard.update(row - 1, col - 1, 'M');
+			}
+			cout << "This is what the AI has tried to hit" << endl;
+			P2AttackBoard.printBoard();
+			attack = false;
+		}
 	}
 	else if (difficulty == 3)
 	{
-
+		cout << "Needs to be implemented" << endl;
 	}
+	previous.x = row;
+	previous.y = col;
+	return previous;
 }

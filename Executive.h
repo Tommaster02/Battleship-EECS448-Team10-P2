@@ -6,6 +6,11 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 
+struct Point
+{
+	int x, y, h;
+};
+
 class Executive
 {
 private:
@@ -96,9 +101,10 @@ public:
 	  * Allows the AI to attack based on the difficulty. 
 	  *
 	  * @parm int - Gives the difficulty
-	  * @return Nothing
+	  * @parm Point - The previous point the AI tried to hit.
+	  * @return Point - Returns the previous point the AI tried to hit.
 	  **/
-	void AIAttack(int difficulty);
+	Point AIAttack(int difficulty, Point);
 
 	void LaserH(int row); //Horizontal Laser attack
 	void LaserV(int col); //Vertical Laser attack
