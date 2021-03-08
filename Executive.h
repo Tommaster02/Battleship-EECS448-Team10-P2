@@ -8,7 +8,7 @@
 
 struct Point
 {
-	int x, y, h;
+	int x, y, h, s, hx, hy, firstx, firsty;
 };
 
 class Executive

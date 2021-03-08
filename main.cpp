@@ -65,7 +65,7 @@ void Play(int d)
 	int mode = 1;
 	int leader = 0;
 	int difficulty = d;
-	struct Point p1 { 0, 0, 0 };
+	struct Point p1 { 0, 0, 0, 0, 0, 0, 0, 0};
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
 		if (cin >> shipNum)
@@ -104,7 +104,7 @@ void Play(int d)
 			break;
 		}
 
-		e1.AIAttack(difficulty, p1);
+		p1 = e1.AIAttack(difficulty, p1);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";

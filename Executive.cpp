@@ -487,7 +487,7 @@ Point Executive::AIAttack(int difficulty, Point previous)
 	}
 	else if (difficulty == 2)
 	{
-		if (previous.h == 0)
+		if (previous.h == 0 && previous.s == 0)
 		{
 			while (attack)
 			{
@@ -502,21 +502,32 @@ Point Executive::AIAttack(int difficulty, Point previous)
 				{
 					P2AttackBoard.update(row - 1, col - 1, 'H');
 					P1Board1.update(row - 1, col - 1, 'H');
+					previous.h = 1;
+					previous.s = 1;
+					previous.hx = row;
+					previous.hy = col;
+					previous.firstx = row;
+					previous.firsty = col;
 					if (P1Board1.isSunk(row - 1, col - 1))
 					{
 						P1Board1.sinkShip();
+						previous.s = 0;
 						previous.h = 0;
+						previous.hx = 0;
+						previous.hy = 0;
+						previous.firstx = 0;
+						previous.firsty = 0;
 					}
 
 					if (P1Board1.getShipsLeft() == 0)
 					{
 						player2Won = true;
 					}
-					previous.h = 1;
 				}
 				else
 				{
 					P2AttackBoard.update(row - 1, col - 1, 'M');
+					previous.h = 0;
 				}
 				cout << "This is what the AI has tried to hit" << endl;
 				P2AttackBoard.printBoard();
@@ -525,25 +536,60 @@ Point Executive::AIAttack(int difficulty, Point previous)
 		}
 		else
 		{
-			row = previous.x + 1;
-			col = previous.y;
+			row = previous.hx;
+			col = previous.hy;
 			int i = 0;
 			while (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 			{
 				if (i == 0)
 				{
-					row = previous.x;
-					col = previous.y + 1;
+					row = previous.hx;
+					col = previous.hy + 1;
 				}
 				else if (i == 1)
 				{
-					row = previous.x;
-					col = previous.y - 1;
+					row = previous.hx;
+					col = previous.hy - 1;
 				}
 				else if (i == 2)
 				{
-					row = previous.x - 1;
-					col = previous.y;
+					row = previous.hx - 1;
+					col = previous.hy;
+				}
+				else if (i == 3)
+				{
+					row = previous.hx + 1;
+					col = previous.hy;
+				}
+				if (i > 3)
+				{
+					row = previous.firstx;
+					col = previous.firsty;
+					int j = 0;
+					while (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+					{
+						if (j == 0)
+						{
+							row = previous.firstx;
+							col = previous.firsty + 1;
+						}
+						else if (j == 1)
+						{
+							row = previous.firstx;
+							col = previous.firsty - 1;
+						}
+						else if (j == 2)
+						{
+							row = previous.firstx - 1;
+							col = previous.firsty;
+						}
+						else if (j == 3)
+						{
+							row = previous.firstx + 1;
+							col = previous.firsty;
+						}
+						j++;
+					}
 				}
 				i++;
 			}
@@ -551,21 +597,30 @@ Point Executive::AIAttack(int difficulty, Point previous)
 			{
 				P2AttackBoard.update(row - 1, col - 1, 'H');
 				P1Board1.update(row - 1, col - 1, 'H');
+				previous.h = 1;
+				previous.s = 1;
+				previous.hx = row;
+				previous.hy = col;
 				if (P1Board1.isSunk(row - 1, col - 1))
 				{
 					P1Board1.sinkShip();
+					previous.s = 0;
 					previous.h = 0;
+					previous.hx = 0;
+					previous.hy = 0;
+					previous.firstx = 0;
+					previous.firsty = 0;
 				}
 
 				if (P1Board1.getShipsLeft() == 0)
 				{
 					player2Won = true;
 				}
-				previous.h = 1;
 			}
 			else
 			{
 				P2AttackBoard.update(row - 1, col - 1, 'M');
+				previous.h = 0;
 			}
 			cout << "This is what the AI has tried to hit" << endl;
 			P2AttackBoard.printBoard();
