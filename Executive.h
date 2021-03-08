@@ -104,7 +104,14 @@ public:
 	  * @parm Point - The previous point the AI tried to hit.
 	  * @return Point - Returns the previous point the AI tried to hit.
 	  **/
-	Point AIAttack(int difficulty, Point);
+	Point AIAttack(int difficulty, Point, vector<vector<pair<int, int>>>);
+
+	/**
+	  * Gets the cheat coordinates for the hardest difficulty.
+	  *
+	  * @return Point - Returns the vector with the ship's coordinates.
+	  **/
+	vector<vector<pair<int, int>>> cheatGet();
 
 	void LaserH(int row); //Horizontal Laser attack
 	void LaserV(int col); //Vertical Laser attack

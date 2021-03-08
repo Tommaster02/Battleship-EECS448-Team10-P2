@@ -66,6 +66,7 @@ void Play(int d)
 	int leader = 0;
 	int difficulty = d;
 	struct Point p1 { 0, 0, 0, 0, 0, 0, 0, 0};
+	vector<vector<pair<int, int>>> cheat;
 	while (true) {
 		cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
 		if (cin >> shipNum)
@@ -92,6 +93,8 @@ void Play(int d)
 	e1.P1Place();
 	e1.AIPlacement();
 
+	cheat = e1.cheatGet();
+
 	while (true)
 	{
 		e1.P1Attack(mode, leader);
@@ -104,7 +107,7 @@ void Play(int d)
 			break;
 		}
 
-		p1 = e1.AIAttack(difficulty, p1);
+		p1 = e1.AIAttack(difficulty, p1, cheat);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";

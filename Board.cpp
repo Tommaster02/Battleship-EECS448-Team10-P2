@@ -233,3 +233,8 @@ void Board::printBoard()
 	}
 
 }
+
+std::vector<std::vector<std::pair<int, int>>> Board::getCoordinates()
+{
+	return shipsCoordinates;
+}

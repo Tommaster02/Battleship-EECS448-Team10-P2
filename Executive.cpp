@@ -446,7 +446,7 @@ void Executive::clrscn() {
 	;
 }
 
-Point Executive::AIAttack(int difficulty, Point previous)
+Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int, int>>> cheat)
 {
 	int row = 0;
 	int col = 0;
@@ -629,9 +629,14 @@ Point Executive::AIAttack(int difficulty, Point previous)
 	}
 	else if (difficulty == 3)
 	{
-		cout << "Needs to be implemented" << endl;
+		
 	}
 	previous.x = row;
 	previous.y = col;
 	return previous;
+}
+
+vector<vector<pair<int, int>>> Executive::cheatGet()
+{
+	return P1Board1.getCoordinates();
 }

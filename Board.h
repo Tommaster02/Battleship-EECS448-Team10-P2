@@ -133,6 +133,13 @@ public:
 	* @return Bool - True for sunk, false for not missed
 	**/
 	void printBoard();
+
+	/**
+	* Gives the vector of coordinates
+	*
+	* @return std::vector<std::vector<std::pair<int, int>>> - Returns the vector filled with the coordinates
+	**/
+	std::vector<std::vector<std::pair<int, int>>> getCoordinates();
 };
 #endif
 
