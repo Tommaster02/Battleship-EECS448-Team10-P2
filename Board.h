@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
 #ifndef BOARD_H
 #define BOARD_H

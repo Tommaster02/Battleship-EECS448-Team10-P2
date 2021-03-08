@@ -65,6 +65,7 @@ void Play(int d)
 	int mode = 1;
 	int leader = 0;
 	int difficulty = d;
+	int turn = 1;
 	struct Point p1 { 0, 0, 0, 0, 0, 0, 0, 0};
 	vector<vector<pair<int, int>>> cheat;
 	while (true) {
@@ -107,7 +108,7 @@ void Play(int d)
 			break;
 		}
 
-		p1 = e1.AIAttack(difficulty, p1, cheat);
+		p1 = e1.AIAttack(difficulty, p1, cheat, turn);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -115,6 +116,7 @@ void Play(int d)
 			cout << "\n----------------------------------------\n";
 			break;
 		}
+		turn++;
 	}
 }
 
