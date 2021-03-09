@@ -133,7 +133,6 @@ public:
 	  * @return Nothing
 	  **/
 	void LaserV(int col, int player); //Vertical Laser attack
-=======
 
 	/**
 	  * Hits the opponent board with 10 random attacks.
@@ -159,7 +158,6 @@ public:
 	  **/
 	void ringOfFire(int player);
 	void AbilityPrompt(int leader);
->>>>>>> ca79554888acc7f226c0d864f37fb740c0bfef2b
 	void clrscn();
 };
 #endif
