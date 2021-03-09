@@ -115,7 +115,7 @@ public:
 
 	void LaserH(int row); //Horizontal Laser attack
 	void LaserV(int col); //Vertical Laser attack
-	void AbilityPrompt(int leader);
+	bool AbilityPrompt(int leader, bool abilityused);
 	void clrscn();
 };
 #endif

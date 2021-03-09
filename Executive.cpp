@@ -171,7 +171,9 @@ void Executive::P1Attack(int mode, int leader, int turn)
 		col = inputAlphabet('A', 'J');
 		if (mode == 3)
 		{
-		AbilityPrompt(leader);
+		bool abilityused = false;
+		abilityused = AbilityPrompt(leader, abilityused);
+
 		}
 		cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
@@ -390,55 +392,61 @@ void Executive::LaserV(int col)
 
 }
 
-void Executive::AbilityPrompt(int leader)
+bool Executive::AbilityPrompt(int leader, bool abilityused)
 {
-	int error = 0;
-	string useability = "";
-	string abilityname = "";
-	cout << "Would you like to use your ability: ";
-	if (leader == 1)
+	if (abilityused == false)
 	{
-		cout << "Laser\n";
-		abilityname = "Laser\n";
-	}
-	else if (leader == 2)
-	{
-		cout << "Shotgun\n";
-		abilityname = "Shotgun\n";
-	}
-	else if (leader == 3)
-	{
-		cout << "Rain of Death\n";
-		abilityname = "Rain of Death\n";
-	}
-	else if (leader == 4)
-	{
-		cout << "Ring of Fire\n";
-		abilityname = "Ring of Fire\n";
-	}
-	else
-	{
-		cout << "An error has occured.\n";
-		abilityname = "ERROR\n";
-	}
-
-	do
-	{
-		cin >> useability;
-		if (useability == "y" || useability == "yes")
+		int error = 0;
+		string useability = "";
+		string abilityname = "";
+		cout << "Would you like to use your ability: ";
+		if (leader == 1)
 		{
-			cout << "You have chosen to use the ability: " << abilityname;
+			cout << "Laser\n";
+			abilityname = "Laser\n";
 		}
-		else if (useability == "n" || useability == "no")
+		else if (leader == 2)
 		{
-			cout << "Your ability has grown by"; //ADD MORE HERE
+			cout << "Shotgun\n";
+			abilityname = "Shotgun\n";
+		}
+		else if (leader == 3)
+		{
+			cout << "Rain of Death\n";
+			abilityname = "Rain of Death\n";
+		}
+		else if (leader == 4)
+		{
+			cout << "Ring of Fire\n";
+			abilityname = "Ring of Fire\n";
 		}
 		else
 		{
-			error = 1;
-			cout << "Not a valid choice! Please input 'y' or 'n'\n";
+			cout << "An error has occured.\n";
+			abilityname = "ERROR\n";
 		}
-	} while (error == 1);
+
+		do
+		{
+			cin >> useability;
+			if (useability == "y" || useability == "yes")
+			{
+				cout << "You have chosen to use the ability: " << abilityname;
+				abilityused = true;
+				return abilityused;
+			}
+			else if (useability == "n" || useability == "no")
+			{
+				cout << "Your ability has grown by"; //ADD MORE HERE
+				return abilityused;
+			}
+			else
+			{
+				error = 1;
+				cout << "Not a valid choice! Please input 'y' or 'n'\n";
+			}
+		} while (error == 1);
+	}
 }
 
 void Executive::clrscn() {
@@ -631,12 +639,30 @@ Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int
 	{
 		row = cheat[ship][hit].first;
 		col = cheat[ship][hit].second;
-		if (P1Board1.checkCoordinates(row, col) == 'S')
+		cout << row << " " << col << endl;
+		if (ship == 0 && hit == 0)
 		{
 			P2AttackBoard.update(row, col, 'H');
 			P1Board1.update(row, col, 'H');
 			hit++;
 			if (P1Board1.isSunk(row, col))
+			{
+				P1Board1.sinkShip();
+				ship++;
+				hit = 0;
+			}
+
+			if (P1Board1.getShipsLeft() == 0)
+			{
+				player2Won = true;
+			}
+		}
+		if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
+		{
+			P2AttackBoard.update(row - 1, col - 1, 'H');
+			P1Board1.update(row - 1, col - 1, 'H');
+			hit++;
+			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
 				ship++;
