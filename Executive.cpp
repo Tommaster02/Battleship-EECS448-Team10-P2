@@ -146,7 +146,7 @@ void Executive::P2Place()
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
-void Executive::P1Attack(int mode, int leader, int turn)
+void Executive::P1Attack(int mode, int leader, int turn, bool& abilityused)
 {
 	int row;
 	int col;
@@ -171,9 +171,7 @@ void Executive::P1Attack(int mode, int leader, int turn)
 		col = inputAlphabet('A', 'J');
 		if (mode == 3)
 		{
-		bool abilityused = false;
 		abilityused = AbilityPrompt(leader, abilityused);
-
 		}
 		cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
@@ -214,7 +212,7 @@ void Executive::P1Attack(int mode, int leader, int turn)
 	}
 }
 
-void Executive::P2Attack(int mode, int leader, int turn2)
+void Executive::P2Attack(int mode, int leader, int turn2, bool& abilityused2)
 {
 	int row;
 	int col;
@@ -237,7 +235,10 @@ void Executive::P2Attack(int mode, int leader, int turn2)
 		cout << "\nSelect Column letter: ";
 
 		col = inputAlphabet('A', 'J');
-
+		if (mode == 3)
+		{
+		abilityused2 = AbilityPrompt(leader, abilityused2);
+		}
 		cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
@@ -461,7 +462,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused)
 		int error = 0;
 		string useability = "";
 		string abilityname = "";
-		cout << "Would you like to use your ability: ";
+		cout << "Would you like to use your ability (y/n): ";
 		if (leader == 1)
 		{
 			cout << "Laser\n";
@@ -493,13 +494,14 @@ bool Executive::AbilityPrompt(int leader, bool abilityused)
 			cin >> useability;
 			if (useability == "y" || useability == "yes")
 			{
-				cout << "You have chosen to use the ability: " << abilityname;
+				cout << "You have chosen to use the ability: " << abilityname << endl;
 				abilityused = true;
 				return abilityused;
 			}
 			else if (useability == "n" || useability == "no")
 			{
-				cout << "Your ability has grown by"; //ADD MORE HERE
+					cout << "You did not use your ability.\n";
+				// cout << "Your ability has grown by "; //ADD MORE HERE
 				return abilityused;
 			}
 			else

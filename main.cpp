@@ -10,6 +10,8 @@ void TwoPlayerGame()
 {
 	int turn = 0;
 	int turn2 = 0;
+	bool abilityused = false;
+	bool abilityused2 = false;
 	int mode = 1;
 	int leader = 0;
 	int shipNum = 0;
@@ -33,7 +35,7 @@ void TwoPlayerGame()
 			cin.ignore(1000, '\n');
 		}
 	}
-	cout << "\nThe number of ships are:" << shipNum << "\n\n";
+	cout << "\nThe number of ships are: " << shipNum << "\n\n";
 
 	Executive e1(shipNum);
 	e1.P1Place();
@@ -41,7 +43,7 @@ void TwoPlayerGame()
 
 	while (true)
 	{
-		e1.P1Attack(mode, leader, turn);
+		e1.P1Attack(mode, leader, turn, abilityused);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -50,7 +52,7 @@ void TwoPlayerGame()
 			break;
 		}
 
-		e1.P2Attack(mode, leader, turn2);
+		e1.P2Attack(mode, leader, turn2, abilityused2);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -64,6 +66,7 @@ void TwoPlayerGame()
 void Play(int d)
 {
 	int turn = 0;
+	bool abilityused = false;
 	int shipNum = 0;
 	int mode = 1;
 	int leader = 0;
@@ -92,7 +95,7 @@ void Play(int d)
 			cin.ignore(1000, '\n');
 		}
 	}
-	cout << "\nThe number of ships are:" << shipNum << "\n\n";
+	cout << "\nThe number of ships are: " << shipNum << "\n\n";
 
 	Executive e1(shipNum);
 	e1.P1Place();
@@ -102,7 +105,7 @@ void Play(int d)
 
 	while (true)
 	{
-		e1.P1Attack(mode, leader, turn);
+		e1.P1Attack(mode, leader, turn, abilityused);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -169,6 +172,14 @@ void OnePlayerGame()
 void SpecialGame()
 {
 	int mode = 3;
+	int leader = 0;
+	int leader2 = 0;
+	int error2 = 0;
+	int error3 = 0;
+	int turn = 1;
+	int turn2 = 1;
+	bool abilityused = false;
+	bool abilityused2 = false;
 	cout << "------------------------------------------------------\n";
 	cout << "2 Player *Special* Battleship (Player vs. Player)\n\n\n";
 	cout << "Player 1:\nSelect a leader & their special ability:\n";
@@ -176,8 +187,7 @@ void SpecialGame()
 	cout << "2) Battleship Brandon\n";
 	cout << "3) Captain Wilhelm\n";
 	cout << "4) Commander Tom\n";
-	int leader = 0;
-	int error2 = 0;
+
 
 	do
 	{
@@ -211,6 +221,48 @@ void SpecialGame()
 		}
 	} while (error2 == 1);
 	cout << endl << "-----------------------------------------\n\n\n\n\n";
+
+
+	cout << "------------------------------------------------------\n";
+	cout << "Player 2:\nSelect a leader & their special ability:\n";
+	cout << "1) Admiral Ankeey\n";
+	cout << "2) Battleship Brandon\n";
+	cout << "3) Captain Wilhelm\n";
+	cout << "4) Commander Tom\n";
+
+	do
+	{
+		cin >> leader2;
+		if (leader2 == 1)
+		{
+			cout << "You selected Admiral Ankeey!\n\n Special ability: ";
+			cout << "Laser";
+		}
+		else if (leader2 == 2)
+		{
+			cout << "You selected Battleship Brandon!\n\n Special ability: ";
+			cout << "Shotgun";
+		}
+		else if (leader2 == 3)
+		{
+			cout << "You selected Captain Wilhelm!\n\n Special ability: ";
+			cout << "Rain of Death";
+		}
+		else if (leader2 == 4)
+		{
+			cout << "You selected Commander Tom!\n\n Special ability: ";
+			cout << "Ring of Fire";
+		}
+		else
+		{
+			cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
+			error2 = 1;
+		}
+	} while (error2 == 1);
+	cout << endl << "-----------------------------------------\n\n\n\n\n";
+
 	int shipNum = 0;
 
 	while (true) {
@@ -233,7 +285,7 @@ void SpecialGame()
 			cin.ignore();
 		}
 	}
-	cout << "\nThe number of ships are:" << shipNum << "\n\n";
+	cout << "\nThe number of ships are: " << shipNum << "\n\n";
 
 	Executive e1(shipNum);
 	e1.P1Place();
@@ -241,9 +293,9 @@ void SpecialGame()
 
 	while (true)
 	{
-		int turn = 1;
+
 		cout << "Player 1 Turn " << turn << endl;
-		e1.P1Attack(mode, leader, turn);
+		e1.P1Attack(mode, leader, turn, abilityused);
 		turn++;
 
 		if (e1.P1Won())
@@ -253,9 +305,8 @@ void SpecialGame()
 			cout << "\n----------------------------------------\n";
 			break;
 		}
-		int turn2 = 1;
 		cout << "Player 2 Turn " << turn2 << endl;
-		e1.P2Attack(mode, leader, turn2);
+		e1.P2Attack(mode, leader2, turn2, abilityused2);
 		turn2++;
 
 		if (e1.P2Won())
