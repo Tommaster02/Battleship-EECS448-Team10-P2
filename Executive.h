@@ -133,6 +133,18 @@ public:
 	  * @return Nothing
 	  **/
 	void LaserV(int col, int player); //Vertical Laser attack
+=======
+
+	/**
+	  * Hits the opponent board with 10 random attacks.
+	  *
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void rainOfDeath(int player);
+
+	void AbilityPrompt(int leader);
+>>>>>>> ca79554888acc7f226c0d864f37fb740c0bfef2b
 	void clrscn();
 };
 #endif
