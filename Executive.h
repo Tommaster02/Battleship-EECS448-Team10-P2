@@ -139,6 +139,21 @@ public:
 	  **/
 	void rainOfDeath(int player);
 
+	/**
+	  * Hits the opponent board with 10 hit cone attack.
+	  *
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void shotgun(int player);
+
+	/**
+	  * Hits the opponent board with 5x2 rectangle attack.
+	  *
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void ringOfFire(int player);
 	void AbilityPrompt(int leader);
 	void clrscn();
 };
