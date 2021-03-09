@@ -723,3 +723,46 @@ vector<vector<pair<int, int>>> Executive::cheatGet()
 {
 	return P1Board1.getCoordinates();
 }
+
+void Executive::rainOfDeath(int player)
+{
+	srand(time(0));
+	int row = 0;
+	int col = 0;
+	if (player == 1)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			row = rand() % 10;
+			col = rand() % 10;
+			if (P2Board2.checkCoordinates(row, col) == 'S')
+			{
+				P2Board2.update(row, col, 'H');
+				P1AttackBoard.update(row, col, 'H');
+			}
+			else
+			{
+				P2Board2.update(row, col, 'M');
+				P1AttackBoard.update(row, col, 'M');
+			}
+		}
+	}
+	else if (player == 2)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			row = rand() % 10;
+			col = rand() % 10;
+			if (P1Board1.checkCoordinates(row, col) == 'S')
+			{
+				P1Board1.update(row, col, 'H');
+				P2AttackBoard.update(row, col, 'H');
+			}
+			else
+			{
+				P1Board1.update(row, col, 'M');
+				P2AttackBoard.update(row, col, 'M');
+			}
+		}
+	}
+}
