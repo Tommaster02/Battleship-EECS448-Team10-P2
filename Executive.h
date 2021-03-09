@@ -113,8 +113,23 @@ public:
 	  **/
 	vector<vector<pair<int, int>>> cheatGet();
 
-	void LaserH(int row); //Horizontal Laser attack
-	void LaserV(int col); //Vertical Laser attack
+	/**
+	  * Hits the opponent board with a laser that hits a whole row.
+	  *
+	  * @parm int - Gives the row the player would like to hit
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void LaserH(int row, int player); //Horizontal Laser attack
+
+	/**
+	  * Hits the opponent board with a laser that hits a whole column.
+	  *
+	  * @parm int - Gives the column the player would like to hit
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void LaserV(int col, int player); //Vertical Laser attack
 	void AbilityPrompt(int leader);
 	void clrscn();
 };
