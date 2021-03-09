@@ -8,6 +8,8 @@ using namespace std;
 
 void TwoPlayerGame()
 {
+	int turn = 0;
+	int turn2 = 0;
 	int mode = 1;
 	int leader = 0;
 	int shipNum = 0;
@@ -39,7 +41,7 @@ void TwoPlayerGame()
 
 	while (true)
 	{
-		e1.P1Attack(mode, leader);
+		e1.P1Attack(mode, leader, turn);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -48,7 +50,7 @@ void TwoPlayerGame()
 			break;
 		}
 
-		e1.P2Attack(mode, leader);
+		e1.P2Attack(mode, leader, turn2);
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -61,6 +63,7 @@ void TwoPlayerGame()
 
 void Play(int d)
 {
+	int turn = 0;
 	int shipNum = 0;
 	int mode = 1;
 	int leader = 0;
@@ -99,7 +102,7 @@ void Play(int d)
 
 	while (true)
 	{
-		e1.P1Attack(mode, leader);
+		e1.P1Attack(mode, leader, turn);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -240,7 +243,7 @@ void SpecialGame()
 	{
 		int turn = 1;
 		cout << "Player 1 Turn " << turn << endl;
-		e1.P1Attack(mode, leader);
+		e1.P1Attack(mode, leader, turn);
 		turn++;
 
 		if (e1.P1Won())
@@ -252,7 +255,7 @@ void SpecialGame()
 		}
 		int turn2 = 1;
 		cout << "Player 2 Turn " << turn2 << endl;
-		e1.P2Attack(mode, leader);
+		e1.P2Attack(mode, leader, turn2);
 		turn2++;
 
 		if (e1.P2Won())

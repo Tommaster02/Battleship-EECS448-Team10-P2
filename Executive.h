@@ -54,13 +54,13 @@ public:
 	*
 	* @return Nothing
 	**/
-	void P1Attack(int mode, int leader);
+	void P1Attack(int mode, int leader, int turn);
 	/**
 	  * Player 2 attacks Player 1 ships and updates Player 2 attack board to let player see if they hit or miss
 	  *
 	  * @return Nothing
 	  **/
-	void P2Attack(int mode, int leader);
+	void P2Attack(int mode, int leader, int turn2);
 
 	/**
 	* Determine if Player 1 Won.

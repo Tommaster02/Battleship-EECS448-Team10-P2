@@ -146,7 +146,7 @@ void Executive::P2Place()
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
-void Executive::P1Attack(int mode, int leader)
+void Executive::P1Attack(int mode, int leader, int turn)
 {
 	int row;
 	int col;
@@ -212,7 +212,7 @@ void Executive::P1Attack(int mode, int leader)
 	}
 }
 
-void Executive::P2Attack(int mode, int leader)
+void Executive::P2Attack(int mode, int leader, int turn2)
 {
 	int row;
 	int col;
@@ -632,12 +632,29 @@ Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int
 		row = cheat[ship][hit].first;
 		col = cheat[ship][hit].second;
 		cout << row << " " << col << endl;
-		if (P1Board1.checkCoordinates(row, col) == 'S')
+		if (ship == 0 && hit == 0)
 		{
 			P2AttackBoard.update(row, col, 'H');
 			P1Board1.update(row, col, 'H');
 			hit++;
 			if (P1Board1.isSunk(row, col))
+			{
+				P1Board1.sinkShip();
+				ship++;
+				hit = 0;
+			}
+
+			if (P1Board1.getShipsLeft() == 0)
+			{
+				player2Won = true;
+			}
+		}
+		if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
+		{
+			P2AttackBoard.update(row - 1, col - 1, 'H');
+			P1Board1.update(row - 1, col - 1, 'H');
+			hit++;
+			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
 				ship++;
@@ -662,4 +679,3 @@ vector<vector<pair<int, int>>> Executive::cheatGet()
 {
 	return P1Board1.getCoordinates();
 }
-	
