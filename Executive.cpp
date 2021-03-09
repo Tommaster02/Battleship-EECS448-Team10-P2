@@ -396,7 +396,7 @@ void Executive::AbilityPrompt(int leader)
 	int error = 0;
 	string useability = "";
 	string abilityname = "";
-	cout << "Would you like to use your ability:";
+	cout << "Would you like to use your ability: ";
 	if (leader == 1)
 	{
 		cout << "Laser\n";
@@ -662,3 +662,4 @@ vector<vector<pair<int, int>>> Executive::cheatGet()
 {
 	return P1Board1.getCoordinates();
 }
+	

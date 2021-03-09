@@ -98,7 +98,7 @@ public:
 	  **/
 	void AIPlacement();
 	/**
-	  * Allows the AI to attack based on the difficulty. 
+	  * Allows the AI to attack based on the difficulty.
 	  *
 	  * @parm int - Gives the difficulty
 	  * @parm Point - The previous point the AI tried to hit.

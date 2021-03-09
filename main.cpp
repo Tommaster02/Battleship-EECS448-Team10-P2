@@ -238,7 +238,11 @@ void SpecialGame()
 
 	while (true)
 	{
+		int turn = 1;
+		cout << "Player 1 Turn " << turn << endl;
 		e1.P1Attack(mode, leader);
+		turn++;
+
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
@@ -246,8 +250,11 @@ void SpecialGame()
 			cout << "\n----------------------------------------\n";
 			break;
 		}
-
+		int turn2 = 1;
+		cout << "Player 2 Turn " << turn2 << endl;
 		e1.P2Attack(mode, leader);
+		turn2++;
+
 		if (e1.P2Won())
 		{
 			cout << "\n----------------------------------------\n";
