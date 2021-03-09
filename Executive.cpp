@@ -377,7 +377,6 @@ void Executive::AIPlacement()
 		{
 			placing = false;
 		}
-		P2Board2.printBoard();
 	}
 	cout << "AI Ships have been placed." << endl;
 }
@@ -451,6 +450,7 @@ Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int
 	int row = 0;
 	int col = 0;
 	bool attack = true;
+	srand(time(0));
 	if (difficulty == 1)
 	{
 		while (attack)
