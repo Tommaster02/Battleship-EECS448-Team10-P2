@@ -113,6 +113,9 @@ public:
 	  **/
 	vector<vector<pair<int, int>>> cheatGet();
 
+	void LaserH(int row); //Horizontal Laser attack
+	void LaserV(int col); //Vertical Laser attack
+	bool AbilityPrompt(int leader, bool abilityused);
 	/**
 	  * Hits the opponent board with a laser that hits a whole row.
 	  *
@@ -130,6 +133,7 @@ public:
 	  * @return Nothing
 	  **/
 	void LaserV(int col, int player); //Vertical Laser attack
+=======
 
 	/**
 	  * Hits the opponent board with 10 random attacks.
@@ -155,6 +159,7 @@ public:
 	  **/
 	void ringOfFire(int player);
 	void AbilityPrompt(int leader);
+>>>>>>> ca79554888acc7f226c0d864f37fb740c0bfef2b
 	void clrscn();
 };
 #endif
