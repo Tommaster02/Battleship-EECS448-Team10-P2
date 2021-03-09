@@ -631,30 +631,12 @@ Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int
 	{
 		row = cheat[ship][hit].first;
 		col = cheat[ship][hit].second;
-		cout << row << " " << col << endl;
-		if (ship == 0 && hit == 0)
+		if (P1Board1.checkCoordinates(row, col) == 'S')
 		{
 			P2AttackBoard.update(row, col, 'H');
 			P1Board1.update(row, col, 'H');
 			hit++;
 			if (P1Board1.isSunk(row, col))
-			{
-				P1Board1.sinkShip();
-				ship++;
-				hit = 0;
-			}
-
-			if (P1Board1.getShipsLeft() == 0)
-			{
-				player2Won = true;
-			}
-		}
-		if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
-		{
-			P2AttackBoard.update(row - 1, col - 1, 'H');
-			P1Board1.update(row - 1, col - 1, 'H');
-			hit++;
-			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
 				ship++;
