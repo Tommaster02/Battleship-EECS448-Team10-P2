@@ -154,25 +154,26 @@ void Executive::P1Attack(int mode, int leader, int turn, bool& abilityused)
 	cout << "\n----------------------------------------\n";
 	cout << "           --Player 1 board--             \n";
 	cout << "\n----------------------------------------\n";
-	cout << "--This is location of Your ships--\n";
+	cout << "--This is the location of Your ships--\n";
 	P1Board1.printBoard();
 	cout << "\n\n--This is what you attacked--\n";
 	P1AttackBoard.printBoard();
 	cout << "\n----------------------------------------\n";
 	while (attack)
 	{
-		cout << "Player 1 turn to attack" << endl
-			<< "Select Row number: ";
+		cout << "Player 1 turn to attack" << endl;
+		if (mode == 3)
+		{
+		abilityused = AbilityPrompt(leader, abilityused, 1);
+		}
+		cout << "Select Row number: ";
 
 		row = inputNumber(1, 10);
 
 		cout << "\nSelect Column letter: ";
 
 		col = inputAlphabet('A', 'J');
-		if (mode == 3)
-		{
-		abilityused = AbilityPrompt(leader, abilityused);
-		}
+
 		cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
@@ -227,18 +228,20 @@ void Executive::P2Attack(int mode, int leader, int turn2, bool& abilityused2)
 	cout << "\n----------------------------------------\n";
 	while (attack)
 	{
-		cout << "Player 2 turn to attack" << endl
-			<< "Select Row number: ";
+		cout << "Player 2 turn to attack" << endl;
+		if (mode == 3)
+		{
+		abilityused2 = AbilityPrompt(leader, abilityused2, 2);
+		}
+		cout << "Select Row number: ";
+
 
 		row = inputNumber(1, 10);
 
 		cout << "\nSelect Column letter: ";
 
 		col = inputAlphabet('A', 'J');
-		if (mode == 3)
-		{
-		abilityused2 = AbilityPrompt(leader, abilityused2);
-		}
+
 		cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
 		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
@@ -455,7 +458,7 @@ void Executive::LaserV(int col, int player)
 	}
 }
 
-bool Executive::AbilityPrompt(int leader, bool abilityused)
+bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 {
 	if (abilityused == false)
 	{
@@ -495,6 +498,62 @@ bool Executive::AbilityPrompt(int leader, bool abilityused)
 			if (useability == "y" || useability == "yes")
 			{
 				cout << "You have chosen to use the ability: " << abilityname << endl;
+				if (leader == 1)
+				{
+					string horvert = "";
+					int error1 = 0;
+					int error2 = 0;
+					int error3 = 0;
+
+					int row = 0;
+					int col = 0;
+					cout << "Initiate Vertical or Horizontal Laser Cannon (h/v)? ";
+					do
+					{
+						cin >> horvert;
+						if (horvert == "h")
+						{
+							cout << "Which row would you like to impact? ";
+							do
+							{
+								cin >> row;
+								// CHECK FOR VALID Row
+							} while(error2 == 0);
+
+							LaserH(row, player);
+
+						}
+						else if (horvert == "v")
+						{
+							cout << "Which column would you like to impact? ";
+							do
+							{
+								cin >> col;
+								// CHECK FOR VALID Column
+							} while(error3 == 0);
+							LaserV(col, player);
+						}
+						else
+						{
+							error1 = 1;
+							cout << "Not a valid choice! Please input 'h' or 'v'\n";
+						}
+				} while(error1 == 1);
+
+
+			}
+			else if (leader == 2)
+			{
+
+			}
+			else if (leader == 3)
+			{
+				rainOfDeath(player);
+			}
+			else if (leader == 4)
+			{
+
+			}
 				abilityused = true;
 				return abilityused;
 			}

@@ -115,7 +115,7 @@ public:
 
 	void LaserH(int row); //Horizontal Laser attack
 	void LaserV(int col); //Vertical Laser attack
-	bool AbilityPrompt(int leader, bool abilityused);
+	bool AbilityPrompt(int leader, bool abilityused, int player);
 	/**
 	  * Hits the opponent board with a laser that hits a whole row.
 	  *
@@ -157,7 +157,6 @@ public:
 	  * @return Nothing
 	  **/
 	void ringOfFire(int player);
-	void AbilityPrompt(int leader);
 	void clrscn();
 };
 #endif
