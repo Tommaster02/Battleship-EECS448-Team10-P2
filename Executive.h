@@ -104,7 +104,7 @@ public:
 	  * @parm Point - The previous point the AI tried to hit.
 	  * @return Point - Returns the previous point the AI tried to hit.
 	  **/
-	Point AIAttack(int difficulty, Point, vector<vector<pair<int, int>>>&, int);
+	Point AIAttack(int difficulty, Point, vector<vector<pair<int, int>>>, int&, int&);
 
 	/**
 	  * Gets the cheat coordinates for the hardest difficulty.

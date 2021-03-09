@@ -446,7 +446,7 @@ void Executive::clrscn() {
 	;
 }
 
-Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int, int>>> &cheat, int turn)
+Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int, int>>> cheat, int& ship, int& hit)
 {
 	int row = 0;
 	int col = 0;
@@ -629,17 +629,36 @@ Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int
 	}
 	else if (difficulty == 3)
 	{
-		row = cheat[0][0].first + turn;
-		col = cheat[0][0].second + turn;
+		row = cheat[ship][hit].first;
+		col = cheat[ship][hit].second;
 		cout << row << " " << col << endl;
+		if (ship == 0 && hit == 0)
+		{
+			P2AttackBoard.update(row, col, 'H');
+			P1Board1.update(row, col, 'H');
+			hit++;
+			if (P1Board1.isSunk(row, col))
+			{
+				P1Board1.sinkShip();
+				ship++;
+				hit = 0;
+			}
 
+			if (P1Board1.getShipsLeft() == 0)
+			{
+				player2Won = true;
+			}
+		}
 		if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
 		{
 			P2AttackBoard.update(row - 1, col - 1, 'H');
 			P1Board1.update(row - 1, col - 1, 'H');
+			hit++;
 			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
+				ship++;
+				hit = 0;
 			}
 
 			if (P1Board1.getShipsLeft() == 0)
