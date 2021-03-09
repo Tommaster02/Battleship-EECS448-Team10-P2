@@ -383,13 +383,75 @@ void Executive::AIPlacement()
 	cout << "AI Ships have been placed." << endl;
 }
 
-void Executive::LaserH(int row)
+void Executive::LaserH(int row, int player)
 {
-
+	if (player == 1)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (P2Board2.checkCoordinates(row, i) == 'S')
+			{
+				P2Board2.update(row, i, 'H');
+				P1AttackBoard.update(row, i, 'H');
+			}
+			else
+			{
+				P2Board2.update(row, i, 'M');
+				P1AttackBoard.update(row, i, 'M');
+			}
+		}
+	}
+	else if (player == 2)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (P1Board1.checkCoordinates(row, i) == 'S')
+			{
+				P1Board1.update(row, i, 'H');
+				P2AttackBoard.update(row, i, 'H');
+			}
+			else
+			{
+				P1Board1.update(row, i, 'M');
+				P2AttackBoard.update(row, i, 'M');
+			}
+		}
+	}
 }
-void Executive::LaserV(int col)
+void Executive::LaserV(int col, int player)
 {
-
+	if (player == 1)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (P2Board2.checkCoordinates(i, col) == 'S')
+			{
+				P2Board2.update(i, col, 'H');
+				P1AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P2Board2.update(i, col, 'M');
+				P1AttackBoard.update(i, col, 'M');
+			}
+		}
+	}
+	else if (player == 2)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if (P1Board1.checkCoordinates(i, col) == 'S')
+			{
+				P1Board1.update(i, col, 'H');
+				P2AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P1Board1.update(i, col, 'M');
+				P2AttackBoard.update(i, col, 'M');
+			}
+		}
+	}
 }
 
 bool Executive::AbilityPrompt(int leader, bool abilityused)
