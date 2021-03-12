@@ -514,14 +514,14 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						if (horvert == "h")
 						{
 							cout << "Which row would you like to impact? ";
-							row = inputNumber(1, 10);
+							row = inputNumber(1, 10) - 1;
 							LaserH(row, player);
 
 						}
 						else if (horvert == "v")
 						{
 							cout << "Which column would you like to impact (A-J)? ";
-							col = inputAlphabet('A', 'J');
+							col = inputAlphabet('A', 'J') - 1;
 							LaserV(col, player);
 						}
 						else
@@ -568,7 +568,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 							error2 = 1;
 						} while(error2 == 0);
 
-						ringOfFireH(row, player);
+						ringOfFireH(row, 3, player);
 
 					}
 					else if (horvert == "v")
@@ -586,7 +586,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 							}
 							error3 = 1;
 						} while(error3 == 0);
-						ringOfFireV(col, player);
+						ringOfFireV(col, 3, player);
 					}
 					else
 					{
@@ -885,11 +885,11 @@ void Executive::shotgun(int player)
 	if (player == 1)
 	{
 		cout << "The shot will spray out in a triangle, like so" << endl;
-		cout << "....." << endl << "..." << endl << "." << endl;
+		cout << "....." << endl << " ..." << endl << "  ." << endl;
 		cout << "Enter in the row that you would like the single spot to be: ";
-		row = inputNumber(1, 10);
+		row = inputNumber(1, 10) - 1;
 		cout << "Enter in the column that you would like the single spot to be: ";
-		col = inputAlphabet('A', 'J');
+		col = inputAlphabet('A', 'J') - 1;
 		cout << "Enter in the direction you would like the spray to face: " << endl;
 		cout << "1 for upwards" << endl << "2 for towards the right" << endl << "3 for downward" << endl << "4 for towards the left" << endl;
 		cin >> direction;
@@ -905,9 +905,9 @@ void Executive::shotgun(int player)
 			case 1:
 				for (int i = 0; i < 3; i++)
 				{
-					if (row - i > 0)
+					if (row - i >= 0)
 					{
-						if (P2Board2.checkCoordinates(row - i, col) == 'S')
+						if (P2Board2.checkCoordinates(row- i, col) == 'S')
 						{
 							P2Board2.update(row - i, col, 'H');
 							P1AttackBoard.update(row - i, col, 'H');
@@ -1109,7 +1109,7 @@ void Executive::shotgun(int player)
 			case 3:
 				for (int i = 0; i < 3; i++)
 				{
-					if (row + i < 10)
+					if (row + i <= 10)
 					{
 						if (P2Board2.checkCoordinates(row + i, col) == 'S')
 						{
@@ -1317,9 +1317,9 @@ void Executive::shotgun(int player)
 	cout << "The shot will spray out in a triangle, like so" << endl;
 	cout << "....." << endl << "..." << endl << "." << endl;
 	cout << "Enter in the row that you would like the single spot to be: ";
-	row = inputNumber(1, 10);
+	row = inputNumber(1, 10) - 1;
 	cout << "Enter in the column that you would like the single spot to be: ";
-	col = inputAlphabet('A', 'J');
+	col = inputAlphabet('A', 'J') - 1;
 	cout << "Enter in the direction you would like the spray to face: " << endl;
 	cout << "1 for upwards" << endl << "2 for towards the right" << endl << "3 for downward" << endl << "4 for towards the left" << endl;
 	cin >> direction;
@@ -1335,7 +1335,7 @@ void Executive::shotgun(int player)
 	case 1:
 		for (int i = 0; i < 3; i++)
 		{
-			if (row - i > 0)
+			if (row - i >= 0)
 			{
 				if (P1Board1.checkCoordinates(row - i, col) == 'S')
 				{
@@ -1539,7 +1539,7 @@ void Executive::shotgun(int player)
 	case 3:
 		for (int i = 0; i < 3; i++)
 		{
-			if (row + i < 10)
+			if (row + i <= 10)
 			{
 				if (P1Board1.checkCoordinates(row + i, col) == 'S')
 				{
@@ -1610,28 +1610,28 @@ void Executive::shotgun(int player)
 					}
 					if (col + 2 < 10)
 					{
-						if (P2Board2.checkCoordinates(row + i, col + 2) == 'S')
+						if (P1Board1.checkCoordinates(row + i, col + 2) == 'S')
 						{
-							P2Board2.update(row + i, col + 2, 'H');
-							P1AttackBoard.update(row + i, col + 2, 'H');
+							P1Board1.update(row + i, col + 2, 'H');
+							P2AttackBoard.update(row + i, col + 2, 'H');
 						}
 						else
 						{
-							P2Board2.update(row + i, col + 2, 'M');
-							P1AttackBoard.update(row + i, col + 2, 'M');
+							P1Board1.update(row + i, col + 2, 'M');
+							P2AttackBoard.update(row + i, col + 2, 'M');
 						}
 					}
 					if (col - 2 > 0)
 					{
-						if (P2Board2.checkCoordinates(row + i, col - 2) == 'S')
+						if (P1Board1.checkCoordinates(row + i, col - 2) == 'S')
 						{
-							P2Board2.update(row - i, col + 2, 'H');
-							P1AttackBoard.update(row + i, col - 2, 'H');
+							P1Board1.update(row - i, col + 2, 'H');
+							P2AttackBoard.update(row + i, col - 2, 'H');
 						}
 						else
 						{
-							P2Board2.update(row + i, col - 2, 'M');
-							P1AttackBoard.update(row + i, col - 2, 'M');
+							P1Board1.update(row + i, col - 2, 'M');
+							P2AttackBoard.update(row + i, col - 2, 'M');
 						}
 					}
 				}
@@ -1643,42 +1643,42 @@ void Executive::shotgun(int player)
 		{
 			if (col - i > 0)
 			{
-				if (P2Board2.checkCoordinates(row, col - i) == 'S')
+				if (P1Board1.checkCoordinates(row, col - i) == 'S')
 				{
-					P2Board2.update(row, col - i, 'H');
-					P1AttackBoard.update(row, col - i, 'H');
+					P1Board1.update(row, col - i, 'H');
+					P2AttackBoard.update(row, col - i, 'H');
 				}
 				else
 				{
-					P2Board2.update(row, col - i, 'M');
-					P1AttackBoard.update(row, col - i, 'M');
+					P1Board1.update(row, col - i, 'M');
+					P2AttackBoard.update(row, col - i, 'M');
 				}
 				if (i == 1)
 				{
 					if (row + 1 < 10)
 					{
-						if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row + 1, col - i) == 'S')
 						{
-							P2Board2.update(row + 1, col - i, 'H');
-							P1AttackBoard.update(row + 1, col - i, 'H');
+							P1Board1.update(row + 1, col - i, 'H');
+							P2AttackBoard.update(row + 1, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row + 1, col - i, 'M');
-							P1AttackBoard.update(row + 1, col - i, 'M');
+							P1Board1.update(row + 1, col - i, 'M');
+							P2AttackBoard.update(row + 1, col - i, 'M');
 						}
 					}
 					if (row - 1 > 0)
 					{
-						if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row - 1, col - i) == 'S')
 						{
-							P2Board2.update(row - 1, col - i, 'H');
-							P1AttackBoard.update(row - 1, col - i, 'H');
+							P1Board1.update(row - 1, col - i, 'H');
+							P2AttackBoard.update(row - 1, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row - 1, col - i, 'M');
-							P1AttackBoard.update(row - 1, col - i, 'M');
+							P1Board1.update(row - 1, col - i, 'M');
+							P2AttackBoard.update(row - 1, col - i, 'M');
 						}
 					}
 				}
@@ -1686,54 +1686,54 @@ void Executive::shotgun(int player)
 				{
 					if (row + 1 < 10)
 					{
-						if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row + 1, col - i) == 'S')
 						{
-							P2Board2.update(row + 1, col - i, 'H');
-							P1AttackBoard.update(row + 1, col - i, 'H');
+							P1Board1.update(row + 1, col - i, 'H');
+							P2AttackBoard.update(row + 1, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row + 1, col - i, 'M');
-							P1AttackBoard.update(row + 1, col - i, 'M');
+							P1Board1.update(row + 1, col - i, 'M');
+							P2AttackBoard.update(row + 1, col - i, 'M');
 						}
 					}
 					if (row - 1 > 0)
 					{
-						if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row - 1, col - i) == 'S')
 						{
-							P2Board2.update(row - 1, col - i, 'H');
-							P1AttackBoard.update(row - 1, col - i, 'H');
+							P1Board1.update(row - 1, col - i, 'H');
+							P2AttackBoard.update(row - 1, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row - 1, col - i, 'M');
-							P1AttackBoard.update(row - 1, col - i, 'M');
+							P1Board1.update(row - 1, col - i, 'M');
+							P2AttackBoard.update(row - 1, col - i, 'M');
 						}
 					}
 					if (row + 2 < 10)
 					{
-						if (P2Board2.checkCoordinates(row + 2, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row + 2, col - i) == 'S')
 						{
-							P2Board2.update(row + 2, col - i, 'H');
-							P1AttackBoard.update(row + 2, col - i, 'H');
+							P1Board1.update(row + 2, col - i, 'H');
+							P2AttackBoard.update(row + 2, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row + 2, col - i, 'M');
-							P1AttackBoard.update(row + 2, col - i, 'M');
+							P1Board1.update(row + 2, col - i, 'M');
+							P2AttackBoard.update(row + 2, col - i, 'M');
 						}
 					}
 					if (row - 2 > 0)
 					{
-						if (P2Board2.checkCoordinates(row - 2, col - i) == 'S')
+						if (P1Board1.checkCoordinates(row - 2, col - i) == 'S')
 						{
-							P2Board2.update(row - 2, col - i, 'H');
-							P1AttackBoard.update(row - 2, col - i, 'H');
+							P1Board1.update(row - 2, col - i, 'H');
+							P2AttackBoard.update(row - 2, col - i, 'H');
 						}
 						else
 						{
-							P2Board2.update(row - 2, col - i, 'M');
-							P1AttackBoard.update(row - 2, col - i, 'M');
+							P1Board1.update(row - 2, col - i, 'M');
+							P2AttackBoard.update(row - 2, col - i, 'M');
 						}
 					}
 				}
@@ -1744,11 +1744,11 @@ void Executive::shotgun(int player)
 	}
 }
 
-void Executive::ringOfFireV(int col, int player)
+void Executive::ringOfFireV(int col1, int col2, int player)
 {
 	cout << "test";
 }
-void Executive::ringOfFireH(int row, int player)
+void Executive::ringOfFireH(int row1, int row2, int player)
 {
 	cout << "test";
 }

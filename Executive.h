@@ -157,8 +157,8 @@ public:
 	  * @return Nothing
 	  **/
 
-	void ringOfFireH(int row, int player);
-	void ringOfFireV(int col, int player);
+	void ringOfFireH(int row1, int row2, int player);
+	void ringOfFireV(int col1, int col2, int player);
 	void clrscn();
 };
 #endif
