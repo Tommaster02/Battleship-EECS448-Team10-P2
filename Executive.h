@@ -156,7 +156,9 @@ public:
 	  * @parm int - Gives the player that used the attack
 	  * @return Nothing
 	  **/
-	void ringOfFire(int player);
+
+	void ringOfFireH(int row, int player);
+	void ringOfFireV(int col, int player);
 	void clrscn();
 };
 #endif
