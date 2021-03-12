@@ -188,26 +188,6 @@ void SpecialGame()
 	cout << "3) Captain Wilhelm\n";
 	cout << "4) Commander Tom\n";
 
-	// while (true) {
-	// 	cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
-	// 	if (cin >> shipNum)
-	// 	{
-	// 		if (shipNum < 7 && shipNum > 0)
-	// 		{
-	// 			break;
-	// 		}
-	// 		else
-	// 		{
-	// 			cout << "The input range is not valid!\n";
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		cout << "input not a number!" << endl;
-	// 		cin.clear();
-	// 		cin.ignore(1000, '\n');
-	// 	}
-	// }
 	while (true) {
 		if (cin >> leader)
 		{
@@ -225,7 +205,6 @@ void SpecialGame()
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
 			cin.clear();
 			cin.ignore(1000, '\n');
-			// error2 = 1;
 		}
 	}
 
@@ -278,7 +257,6 @@ void SpecialGame()
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
 			cin.clear();
 			cin.ignore(1000, '\n');
-			// error2 = 1;
 		}
 	}
 
