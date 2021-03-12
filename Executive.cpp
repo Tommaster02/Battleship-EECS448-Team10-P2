@@ -515,7 +515,6 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						{
 							cout << "Which row would you like to impact? ";
 							row = inputNumber(1, 10);
-
 							LaserH(row, player);
 
 						}
@@ -836,7 +835,7 @@ void Executive::shotgun(int player)
 	if (player == 1)
 	{
 		cout << "The shot will spray out in a triangle, like so" << endl;
-		cout << "...." << endl << "..." << endl << "." << endl;
+		cout << "....." << endl << "..." << endl << "." << endl;
 		cout << "Enter in the row that you would like the single spot to be: ";
 		row = inputNumber(1, 10);
 		cout << "Enter in the column that you would like the single spot to be: ";
@@ -958,7 +957,7 @@ void Executive::shotgun(int player)
 			case 2:
 				for (int i = 0; i < 3; i++)
 				{
-					if (col + i > 0)
+					if (col + i < 10)
 					{
 						if (P2Board2.checkCoordinates(row, col + i) == 'S')
 						{
@@ -1058,33 +1057,639 @@ void Executive::shotgun(int player)
 				}
 				break;
 			case 3:
-				if (P2Board2.checkCoordinates(row, col2) == 'S')
+				for (int i = 0; i < 3; i++)
 				{
-					P2Board2.update(row, col2, 'H');
-					P1AttackBoard.update(row, col2, 'H');
-				}
-				else
-				{
-					P2Board2.update(row, col2, 'M');
-					P1AttackBoard.update(row, col2, 'M');
+					if (row + i < 10)
+					{
+						if (P2Board2.checkCoordinates(row + i, col) == 'S')
+						{
+							P2Board2.update(row + i, col, 'H');
+							P1AttackBoard.update(row + i, col, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + i, col, 'M');
+							P1AttackBoard.update(row + i, col, 'M');
+						}
+						if (i == 1)
+						{
+							if (col + 1 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + i, col + 1) == 'S')
+								{
+									P2Board2.update(row + i, col + 1, 'H');
+									P1AttackBoard.update(row + i, col + 1, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col + 1, 'M');
+									P1AttackBoard.update(row + i, col + 1, 'M');
+								}
+							}
+							if (col - 1 > 0)
+							{
+								if (P2Board2.checkCoordinates(row + i, col - 1) == 'S')
+								{
+									P2Board2.update(row + i, col - 1, 'H');
+									P1AttackBoard.update(row + i, col - 1, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col - 1, 'M');
+									P1AttackBoard.update(row + i, col - 1, 'M');
+								}
+							}
+						}
+						else if (i == 2)
+						{
+							if (col + 1 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + i, col + 1) == 'S')
+								{
+									P2Board2.update(row + i, col + 1, 'H');
+									P1AttackBoard.update(row + i, col + 1, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col + 1, 'M');
+									P1AttackBoard.update(row + i, col + 1, 'M');
+								}
+							}
+							if (col - 1 > 0)
+							{
+								if (P2Board2.checkCoordinates(row + i, col - 1) == 'S')
+								{
+									P2Board2.update(row + i, col - 1, 'H');
+									P1AttackBoard.update(row - i, col - 1, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col - 1, 'M');
+									P1AttackBoard.update(row + i, col - 1, 'M');
+								}
+							}
+							if (col + 2 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + i, col + 2) == 'S')
+								{
+									P2Board2.update(row + i, col + 2, 'H');
+									P1AttackBoard.update(row + i, col + 2, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col + 2, 'M');
+									P1AttackBoard.update(row + i, col + 2, 'M');
+								}
+							}
+							if (col - 2 > 0)
+							{
+								if (P2Board2.checkCoordinates(row + i, col - 2) == 'S')
+								{
+									P2Board2.update(row - i, col + 2, 'H');
+									P1AttackBoard.update(row + i, col - 2, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + i, col - 2, 'M');
+									P1AttackBoard.update(row + i, col - 2, 'M');
+								}
+							}
+						}
+					}
 				}
 				break;
 			case 4:
-				if (P2Board2.checkCoordinates(row, col2) == 'S')
+				for (int i = 0; i < 3; i++)
 				{
-					P2Board2.update(row, col2, 'H');
-					P1AttackBoard.update(row, col2, 'H');
-				}
-				else
-				{
-					P2Board2.update(row, col2, 'M');
-					P1AttackBoard.update(row, col2, 'M');
+					if (col - i > 0)
+					{
+						if (P2Board2.checkCoordinates(row, col - i) == 'S')
+						{
+							P2Board2.update(row, col - i, 'H');
+							P1AttackBoard.update(row, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row, col - i, 'M');
+							P1AttackBoard.update(row, col - i, 'M');
+						}
+						if (i == 1)
+						{
+							if (row + 1 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+								{
+									P2Board2.update(row + 1, col - i, 'H');
+									P1AttackBoard.update(row + 1, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + 1, col - i, 'M');
+									P1AttackBoard.update(row + 1, col - i, 'M');
+								}
+							}
+							if (row - 1 > 0)
+							{
+								if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+								{
+									P2Board2.update(row - 1, col - i, 'H');
+									P1AttackBoard.update(row - 1, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row - 1, col - i, 'M');
+									P1AttackBoard.update(row - 1, col - i, 'M');
+								}
+							}
+						}
+						else if (i == 2)
+						{
+							if (row + 1 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+								{
+									P2Board2.update(row + 1, col - i, 'H');
+									P1AttackBoard.update(row + 1, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + 1, col - i, 'M');
+									P1AttackBoard.update(row + 1, col - i, 'M');
+								}
+							}
+							if (row - 1 > 0)
+							{
+								if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+								{
+									P2Board2.update(row - 1, col - i, 'H');
+									P1AttackBoard.update(row - 1, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row - 1, col - i, 'M');
+									P1AttackBoard.update(row - 1, col - i, 'M');
+								}
+							}
+							if (row + 2 < 10)
+							{
+								if (P2Board2.checkCoordinates(row + 2, col - i) == 'S')
+								{
+									P2Board2.update(row + 2, col - i, 'H');
+									P1AttackBoard.update(row + 2, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row + 2, col - i, 'M');
+									P1AttackBoard.update(row + 2, col - i, 'M');
+								}
+							}
+							if (row - 2 > 0)
+							{
+								if (P2Board2.checkCoordinates(row - 2, col - i) == 'S')
+								{
+									P2Board2.update(row - 2, col - i, 'H');
+									P1AttackBoard.update(row - 2, col - i, 'H');
+								}
+								else
+								{
+									P2Board2.update(row - 2, col - i, 'M');
+									P1AttackBoard.update(row - 2, col - i, 'M');
+								}
+							}
+						}
+					}
 				}
 				break;
 		}
 	}
 	else if (player == 2)
 	{
-
+	cout << "The shot will spray out in a triangle, like so" << endl;
+	cout << "....." << endl << "..." << endl << "." << endl;
+	cout << "Enter in the row that you would like the single spot to be: ";
+	row = inputNumber(1, 10);
+	cout << "Enter in the column that you would like the single spot to be: ";
+	col = inputAlphabet('A', 'J');
+	cout << "Enter in the direction you would like the spray to face: " << endl;
+	cout << "1 for upwards" << endl << "2 for towards the right" << endl << "3 for downward" << endl << "4 for towards the left" << endl;
+	cin >> direction;
+	while (direction != 1 && direction != 2 && direction != 3 && direction != 4)
+	{
+		cout << "Not valid, try again" << endl;
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> direction;
+	}
+	switch (direction)
+	{
+	case 1:
+		for (int i = 0; i < 3; i++)
+		{
+			if (row - i > 0)
+			{
+				if (P1Board1.checkCoordinates(row - i, col) == 'S')
+				{
+					P1Board1.update(row - i, col, 'H');
+					P2AttackBoard.update(row - i, col, 'H');
+				}
+				else
+				{
+					P1Board1.update(row - i, col, 'M');
+					P2AttackBoard.update(row - i, col, 'M');
+				}
+				if (i == 1)
+				{
+					if (col + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row - i, col + 1) == 'S')
+						{
+							P1Board1.update(row - i, col + 1, 'H');
+							P2AttackBoard.update(row - i, col + 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col + 1, 'M');
+							P2AttackBoard.update(row - i, col + 1, 'M');
+						}
+					}
+					if (col - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - i, col - 1) == 'S')
+						{
+							P1Board1.update(row - i, col - 1, 'H');
+							P2AttackBoard.update(row - i, col - 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col - 1, 'M');
+							P2AttackBoard.update(row - i, col - 1, 'M');
+						}
+					}
+				}
+				else if (i == 2)
+				{
+					if (col + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row - i, col + 1) == 'S')
+						{
+							P1Board1.update(row - i, col + 1, 'H');
+							P2AttackBoard.update(row - i, col + 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col + 1, 'M');
+							P2AttackBoard.update(row - i, col + 1, 'M');
+						}
+					}
+					if (col - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - i, col - 1) == 'S')
+						{
+							P1Board1.update(row - i, col - 1, 'H');
+							P2AttackBoard.update(row - i, col - 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col - 1, 'M');
+							P2AttackBoard.update(row - i, col - 1, 'M');
+						}
+					}
+					if (col + 2 < 10)
+					{
+						if (P1Board1.checkCoordinates(row - i, col + 2) == 'S')
+						{
+							P1Board1.update(row - i, col + 2, 'H');
+							P2AttackBoard.update(row - i, col + 2, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col + 2, 'M');
+							P2AttackBoard.update(row - i, col + 2, 'M');
+						}
+					}
+					if (col - 2 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - i, col - 2) == 'S')
+						{
+							P1Board1.update(row - i, col - 2, 'H');
+							P2AttackBoard.update(row - i, col - 2, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - i, col - 2, 'M');
+							P2AttackBoard.update(row - i, col - 2, 'M');
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		for (int i = 0; i < 3; i++)
+		{
+			if (col + i < 10)
+			{
+				if (P1Board1.checkCoordinates(row, col + i) == 'S')
+				{
+					P1Board1.update(row, col + i, 'H');
+					P2AttackBoard.update(row, col + i, 'H');
+				}
+				else
+				{
+					P1Board1.update(row, col + i, 'M');
+					P2AttackBoard.update(row, col + i, 'M');
+				}
+				if (i == 1)
+				{
+					if (row + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row + 1, col + i) == 'S')
+						{
+							P1Board1.update(row + 1, col + i, 'H');
+							P2AttackBoard.update(row + 1, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + 1, col + i, 'M');
+							P2AttackBoard.update(row + 1, col + i, 'M');
+						}
+					}
+					if (row - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - 1, col + i) == 'S')
+						{
+							P1Board1.update(row - 1, col + i, 'H');
+							P2AttackBoard.update(row - 1, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - 1, col + i, 'M');
+							P2AttackBoard.update(row - 1, col + i, 'M');
+						}
+					}
+				}
+				else if (i == 2)
+				{
+					if (row + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row + 1, col + i) == 'S')
+						{
+							P1Board1.update(row + 1, col + i, 'H');
+							P2AttackBoard.update(row + 1, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + 1, col + i, 'M');
+							P2AttackBoard.update(row + 1, col + i, 'M');
+						}
+					}
+					if (row - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - 1, col + i) == 'S')
+						{
+							P1Board1.update(row - 1, col + i, 'H');
+							P2AttackBoard.update(row - 1, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - 1, col + i, 'M');
+							P2AttackBoard.update(row - 1, col + i, 'M');
+						}
+					}
+					if (row + 2 < 10)
+					{
+						if (P1Board1.checkCoordinates(row + 2, col + i) == 'S')
+						{
+							P1Board1.update(row + 2, col + i, 'H');
+							P2AttackBoard.update(row + 2, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + 2, col + i, 'M');
+							P2AttackBoard.update(row + 2, col + i, 'M');
+						}
+					}
+					if (row - 2 > 0)
+					{
+						if (P1Board1.checkCoordinates(row - 2, col + i) == 'S')
+						{
+							P1Board1.update(row - 2, col + i, 'H');
+							P2AttackBoard.update(row - 2, col + i, 'H');
+						}
+						else
+						{
+							P1Board1.update(row - 2, col + i, 'M');
+							P2AttackBoard.update(row - 2, col + i, 'M');
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 3:
+		for (int i = 0; i < 3; i++)
+		{
+			if (row + i < 10)
+			{
+				if (P1Board1.checkCoordinates(row + i, col) == 'S')
+				{
+					P1Board1.update(row + i, col, 'H');
+					P2AttackBoard.update(row + i, col, 'H');
+				}
+				else
+				{
+					P1Board1.update(row + i, col, 'M');
+					P2AttackBoard.update(row + i, col, 'M');
+				}
+				if (i == 1)
+				{
+					if (col + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row + i, col + 1) == 'S')
+						{
+							P1Board1.update(row + i, col + 1, 'H');
+							P2AttackBoard.update(row + i, col + 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + i, col + 1, 'M');
+							P2AttackBoard.update(row + i, col + 1, 'M');
+						}
+					}
+					if (col - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row + i, col - 1) == 'S')
+						{
+							P1Board1.update(row + i, col - 1, 'H');
+							P2AttackBoard.update(row + i, col - 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + i, col - 1, 'M');
+							P2AttackBoard.update(row + i, col - 1, 'M');
+						}
+					}
+				}
+				else if (i == 2)
+				{
+					if (col + 1 < 10)
+					{
+						if (P1Board1.checkCoordinates(row + i, col + 1) == 'S')
+						{
+							P1Board1.update(row + i, col + 1, 'H');
+							P2AttackBoard.update(row + i, col + 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + i, col + 1, 'M');
+							P2AttackBoard.update(row + i, col + 1, 'M');
+						}
+					}
+					if (col - 1 > 0)
+					{
+						if (P1Board1.checkCoordinates(row + i, col - 1) == 'S')
+						{
+							P1Board1.update(row + i, col - 1, 'H');
+							P2AttackBoard.update(row - i, col - 1, 'H');
+						}
+						else
+						{
+							P1Board1.update(row + i, col - 1, 'M');
+							P2AttackBoard.update(row + i, col - 1, 'M');
+						}
+					}
+					if (col + 2 < 10)
+					{
+						if (P2Board2.checkCoordinates(row + i, col + 2) == 'S')
+						{
+							P2Board2.update(row + i, col + 2, 'H');
+							P1AttackBoard.update(row + i, col + 2, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + i, col + 2, 'M');
+							P1AttackBoard.update(row + i, col + 2, 'M');
+						}
+					}
+					if (col - 2 > 0)
+					{
+						if (P2Board2.checkCoordinates(row + i, col - 2) == 'S')
+						{
+							P2Board2.update(row - i, col + 2, 'H');
+							P1AttackBoard.update(row + i, col - 2, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + i, col - 2, 'M');
+							P1AttackBoard.update(row + i, col - 2, 'M');
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 4:
+		for (int i = 0; i < 3; i++)
+		{
+			if (col - i > 0)
+			{
+				if (P2Board2.checkCoordinates(row, col - i) == 'S')
+				{
+					P2Board2.update(row, col - i, 'H');
+					P1AttackBoard.update(row, col - i, 'H');
+				}
+				else
+				{
+					P2Board2.update(row, col - i, 'M');
+					P1AttackBoard.update(row, col - i, 'M');
+				}
+				if (i == 1)
+				{
+					if (row + 1 < 10)
+					{
+						if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+						{
+							P2Board2.update(row + 1, col - i, 'H');
+							P1AttackBoard.update(row + 1, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + 1, col - i, 'M');
+							P1AttackBoard.update(row + 1, col - i, 'M');
+						}
+					}
+					if (row - 1 > 0)
+					{
+						if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+						{
+							P2Board2.update(row - 1, col - i, 'H');
+							P1AttackBoard.update(row - 1, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row - 1, col - i, 'M');
+							P1AttackBoard.update(row - 1, col - i, 'M');
+						}
+					}
+				}
+				else if (i == 2)
+				{
+					if (row + 1 < 10)
+					{
+						if (P2Board2.checkCoordinates(row + 1, col - i) == 'S')
+						{
+							P2Board2.update(row + 1, col - i, 'H');
+							P1AttackBoard.update(row + 1, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + 1, col - i, 'M');
+							P1AttackBoard.update(row + 1, col - i, 'M');
+						}
+					}
+					if (row - 1 > 0)
+					{
+						if (P2Board2.checkCoordinates(row - 1, col - i) == 'S')
+						{
+							P2Board2.update(row - 1, col - i, 'H');
+							P1AttackBoard.update(row - 1, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row - 1, col - i, 'M');
+							P1AttackBoard.update(row - 1, col - i, 'M');
+						}
+					}
+					if (row + 2 < 10)
+					{
+						if (P2Board2.checkCoordinates(row + 2, col - i) == 'S')
+						{
+							P2Board2.update(row + 2, col - i, 'H');
+							P1AttackBoard.update(row + 2, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row + 2, col - i, 'M');
+							P1AttackBoard.update(row + 2, col - i, 'M');
+						}
+					}
+					if (row - 2 > 0)
+					{
+						if (P2Board2.checkCoordinates(row - 2, col - i) == 'S')
+						{
+							P2Board2.update(row - 2, col - i, 'H');
+							P1AttackBoard.update(row - 2, col - i, 'H');
+						}
+						else
+						{
+							P2Board2.update(row - 2, col - i, 'M');
+							P1AttackBoard.update(row - 2, col - i, 'M');
+						}
+					}
+				}
+			}
+		}
+		break;
+	}
 	}
 }
