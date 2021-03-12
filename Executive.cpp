@@ -518,6 +518,14 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 							{
 								cin >> row;
 								// CHECK FOR VALID Row
+								while (row < 1 || row > 10)
+								{
+									cout << "Not a valid row" << endl;
+									cin.clear();
+									cin.ignore(1000, '\n');
+									cin >> row;
+								}
+								error2 = 1;
 							} while(error2 == 0);
 
 							LaserH(row, player);
@@ -529,7 +537,14 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 							do
 							{
 								cin >> col;
-								// CHECK FOR VALID Column
+								while (col < 'A' || col > 'J')
+								{
+									cout << "Not a valid column" << endl;
+									cin.clear();
+									cin.ignore(1000, '\n');
+									cin >> col;
+								}
+								error3 = 1;
 							} while(error3 == 0);
 							LaserV(col, player);
 						}
@@ -833,5 +848,137 @@ void Executive::rainOfDeath(int player)
 				P2AttackBoard.update(row, col, 'M');
 			}
 		}
+	}
+}
+
+void Executive::shotgun(int player)
+{
+	int row = 0;
+	char col;
+	int col2 = 0;
+	int direction = 0;
+	if (player == 1)
+	{
+		cout << "The shot will spray out in a triangle, like so" << endl;
+		cout << "...." << endl << "..." << endl << "." << endl;
+		cout << "Enter in the row that you would like the single spot to be: ";
+		cin >> row;
+		while (row < 1 || row > 10)
+		{
+			cout << "Not a value row, try again" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cin >> row;
+		}
+		cout << "Enter in the column that you would like the single spot to be: ";
+		cin >> col;
+		while (col < 'A' || col > 'J')
+		{
+			cout << "Not a value column, try again" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cin >> col;
+		}
+		switch (col)
+		{
+			case 'A':
+				col2 = 0;
+				break;
+			case 'B':
+				col2 = 1;
+				break;
+			case 'C':
+				col2 = 2;
+				break;
+			case 'D':
+				col2 = 3;
+				break;
+			case 'E':
+				col2 = 4;
+				break;
+			case 'F':
+				col2 = 5;
+				break;
+			case 'G':
+				col2 = 6;
+				break;
+			case 'H':
+				col2 = 7;
+				break;
+			case 'I':
+				col2 = 8;
+				break;
+			case 'J':
+				col2 = 9;
+				break;
+		}
+		cout << "Enter in the direction you would like the spray to face: " << endl;
+		cout << "1 for upwards" << endl << "2 for towards the right" << endl << "3 for downward" << endl << "4 for towards the left" << endl;
+		cin >> direction;
+		while (direction != 1 || direction != 2 || direction != 3 || direction != 4)
+		{
+			cout << "Not valid, try again" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cin >> direction;
+		}
+		switch (direction)
+		{
+			case 1: 
+				for (int i = 0; i < 3; i++)
+				{
+					if (P2Board2.checkCoordinates(row - i, col2) == 'S')
+					{
+						P2Board2.update(row - i, col2, 'H');
+						P1AttackBoard.update(row - i, col2, 'H');
+					}
+					else
+					{
+						P2Board2.update(row - i, col2, 'M');
+						P1AttackBoard.update(row - i, col2, 'M');
+					}
+				}
+				break;
+			case 2:
+				if (P2Board2.checkCoordinates(row, col2) == 'S')
+				{
+					P2Board2.update(row, col2, 'H');
+					P1AttackBoard.update(row, col2, 'H');
+				}
+				else
+				{
+					P2Board2.update(row, col2, 'M');
+					P1AttackBoard.update(row, col2, 'M');
+				}
+				break;
+			case 3:
+				if (P2Board2.checkCoordinates(row, col2) == 'S')
+				{
+					P2Board2.update(row, col2, 'H');
+					P1AttackBoard.update(row, col2, 'H');
+				}
+				else
+				{
+					P2Board2.update(row, col2, 'M');
+					P1AttackBoard.update(row, col2, 'M');
+				}
+				break;
+			case 4:
+				if (P2Board2.checkCoordinates(row, col2) == 'S')
+				{
+					P2Board2.update(row, col2, 'H');
+					P1AttackBoard.update(row, col2, 'H');
+				}
+				else
+				{
+					P2Board2.update(row, col2, 'M');
+					P1AttackBoard.update(row, col2, 'M');
+				}
+				break;
+		}
+	}
+	else if (player == 2)
+	{
+
 	}
 }
