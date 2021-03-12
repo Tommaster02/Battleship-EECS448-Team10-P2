@@ -844,7 +844,7 @@ void Executive::shotgun(int player)
 		cout << "Enter in the direction you would like the spray to face: " << endl;
 		cout << "1 for upwards" << endl << "2 for towards the right" << endl << "3 for downward" << endl << "4 for towards the left" << endl;
 		cin >> direction;
-		while (direction != 1 || direction != 2 || direction != 3 || direction != 4)
+		while (direction != 1 && direction != 2 && direction != 3 && direction != 4)
 		{
 			cout << "Not valid, try again" << endl;
 			cin.clear();
