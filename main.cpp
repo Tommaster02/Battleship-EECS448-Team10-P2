@@ -66,7 +66,7 @@ void TwoPlayerGame()
 void Play(int d)
 {
 	int turn = 0;
-	bool abilityused = false;
+	bool abilityUsed = false;
 	int shipNum = 0;
 	int mode = 1;
 	int leader = 0;
@@ -105,7 +105,7 @@ void Play(int d)
 
 	while (true)
 	{
-		e1.P1Attack(mode, leader, turn, abilityused);
+		e1.P1Attack(mode, leader, turn, abilityUsed);
 		if (e1.P1Won())
 		{
 			cout << "\n----------------------------------------\n";
