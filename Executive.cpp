@@ -513,15 +513,44 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						cin >> horvert;
 						if (horvert == "h")
 						{
+<<<<<<< HEAD
 							cout << "Which row would you like to impact? ";
 							row = inputNumber(1, 10);
+=======
+							cout << "Which row would you like to impact (1-10)? ";
+							do
+							{
+								cin >> row;
+								// CHECK FOR VALID Row
+								while (row < 1 || row > 10)
+								{
+									cout << "Not a valid row" << endl;
+									cin.clear();
+									cin.ignore(1000, '\n');
+									cin >> row;
+								}
+								error2 = 1;
+							} while(error2 == 0);
+
+>>>>>>> ab65195dfb55d5e709c25aaf1168c317cf5e2c8e
 							LaserH(row, player);
 
 						}
 						else if (horvert == "v")
 						{
-							cout << "Which column would you like to impact? ";
-							col = inputAlphabet('A', 'J');
+							cout << "Which column would you like to impact (A-J)? ";
+							do
+							{
+								cin >> col;
+								while (col < 'A' || col > 'J')
+								{
+									cout << "Not a valid column" << endl;
+									cin.clear();
+									cin.ignore(1000, '\n');
+									cin >> col;
+								}
+								error3 = 1;
+							} while(error3 == 0);
 							LaserV(col, player);
 						}
 						else
@@ -530,12 +559,10 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 							cout << "Not a valid choice! Please input 'h' or 'v'\n";
 						}
 				} while(error1 == 1);
-
-
 			}
 			else if (leader == 2)
 			{
-
+				shotgun(player);
 			}
 			else if (leader == 3)
 			{
@@ -543,7 +570,59 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 			}
 			else if (leader == 4)
 			{
+				string horvert = "";
+				int error1 = 0;
+				int error2 = 0;
+				int error3 = 0;
 
+				int row = 0;
+				int col = 0;
+				cout << "Initiate Vertical or Horizontal Ring of Fire (h/v)? ";
+				do
+				{
+					cin >> horvert;
+					if (horvert == "h")
+					{
+						cout << "Which row would you like to impact (1-10)? ";
+						do
+						{
+							cin >> row;
+							while (row < 1 || row > 10)
+							{
+								cout << "Not a valid row" << endl;
+								cin.clear();
+								cin.ignore(1000, '\n');
+								cin >> row;
+							}
+							error2 = 1;
+						} while(error2 == 0);
+
+						ringOfFireH(row, player);
+
+					}
+					else if (horvert == "v")
+					{
+						cout << "Which column would you like to impact (A-J)? ";
+						do
+						{
+							cin >> col;
+							while (col < 'A' || col > 'J')
+							{
+								cout << "Not a valid column" << endl;
+								cin.clear();
+								cin.ignore(1000, '\n');
+								cin >> col;
+							}
+							error3 = 1;
+						} while(error3 == 0);
+						ringOfFireV(col, player);
+					}
+					else
+					{
+						error1 = 1;
+						cout << "Not a valid choice! Please input 'h' or 'v'\n";
+					}
+				} while(error1 == 1);
 			}
 				abilityused = true;
 				return abilityused;
@@ -852,7 +931,7 @@ void Executive::shotgun(int player)
 		}
 		switch (direction)
 		{
-			case 1: 
+			case 1:
 				for (int i = 0; i < 3; i++)
 				{
 					if (row - i > 0)
@@ -1692,4 +1771,13 @@ void Executive::shotgun(int player)
 		break;
 	}
 	}
+}
+
+void Executive::ringOfFireV(int col, int player)
+{
+	cout << "test";
+}
+void Executive::ringOfFireH(int row, int player)
+{
+	cout << "test";
 }
