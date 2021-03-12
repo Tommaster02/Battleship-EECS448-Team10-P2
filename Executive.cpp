@@ -406,13 +406,24 @@ void Executive::LaserH(int row, int player)
 		{
 			if (P2Board2.checkCoordinates(row, i) == 'S')
 			{
+				cout << "You hit a ship\n";
 				P2Board2.update(row, i, 'H');
 				P1AttackBoard.update(row, i, 'H');
+				if (P2Board2.isSunk(row, i))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P2Board2.update(row, i, 'M');
 				P1AttackBoard.update(row, i, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
@@ -422,13 +433,24 @@ void Executive::LaserH(int row, int player)
 		{
 			if (P1Board1.checkCoordinates(row, i) == 'S')
 			{
+				cout << "You hit a ship!\n";
 				P1Board1.update(row, i, 'H');
 				P2AttackBoard.update(row, i, 'H');
+				if (P2Board2.isSunk(row, i))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P1Board1.update(row, i, 'M');
 				P2AttackBoard.update(row, i, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
@@ -441,13 +463,24 @@ void Executive::LaserV(int col, int player)
 		{
 			if (P2Board2.checkCoordinates(i, col) == 'S')
 			{
+				cout << "You hit a ship!\n";
 				P2Board2.update(i, col, 'H');
 				P1AttackBoard.update(i, col, 'H');
+				if (P2Board2.isSunk(i, col))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P2Board2.update(i, col, 'M');
 				P1AttackBoard.update(i, col, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
@@ -457,13 +490,24 @@ void Executive::LaserV(int col, int player)
 		{
 			if (P1Board1.checkCoordinates(i, col) == 'S')
 			{
+				cout << "You hit a ship!\n";
 				P1Board1.update(i, col, 'H');
 				P2AttackBoard.update(i, col, 'H');
+				if (P2Board2.isSunk(i, col))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P1Board1.update(i, col, 'M');
 				P2AttackBoard.update(i, col, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
@@ -596,7 +640,6 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 			else if (useability == "n" || useability == "no")
 			{
 					cout << "You did not use your ability.\n";
-				// cout << "Your ability has grown by "; //ADD MORE HERE
 				return abilityused;
 			}
 			else
@@ -842,13 +885,25 @@ void Executive::rainOfDeath(int player)
 			col = rand() % 10;
 			if (P2Board2.checkCoordinates(row, col) == 'S')
 			{
+				cout << "You hit a ship!\n";
 				P2Board2.update(row, col, 'H');
 				P1AttackBoard.update(row, col, 'H');
+				if (P2Board2.isSunk(row, col))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P2Board2.update(row, col, 'M');
 				P1AttackBoard.update(row, col, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
@@ -860,13 +915,24 @@ void Executive::rainOfDeath(int player)
 			col = rand() % 10;
 			if (P1Board1.checkCoordinates(row, col) == 'S')
 			{
+				cout << "You hit a ship!\n";
 				P1Board1.update(row, col, 'H');
 				P2AttackBoard.update(row, col, 'H');
+				if (P2Board2.isSunk(row, col))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
 			}
 			else
 			{
 				P1Board1.update(row, col, 'M');
 				P2AttackBoard.update(row, col, 'M');
+				cout << "You missed!\n";
 			}
 		}
 	}
