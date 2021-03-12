@@ -568,7 +568,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						row = inputNumber(1, 10) - 1;
 
 						cout << "Input in the column you would like the top right hand column to be (A-J) ";
-						col = inputAlphabet(1, 10) - 1;
+						col = inputAlphabet('A', 'J') - 1;
 
 						ringOfFireH(row, col, player);
 
@@ -579,7 +579,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						row = inputNumber(1, 10) - 1;
 
 						cout << "Input in the column you would like the top right hand column to be (A-J) ";
-						col = inputAlphabet(1, 10) - 1;
+						col = inputAlphabet('A', 'J') - 1;
 
 						ringOfFireV(row, col, player);
 					}
@@ -1743,66 +1743,125 @@ void Executive::ringOfFireV(int row, int col, int player)
 {
 	if (player == 1)
 	{
-		for (int i = row; i < 10; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			if (P2Board2.checkCoordinates(i, col) == 'S')
+			if (P2Board2.checkCoordinates(row + i, col) == 'S')
 			{
-				P2Board2.update(i, col, 'H');
-				P1AttackBoard.update(i, col, 'H');
+				P2Board2.update(row + i, col, 'H');
+				P1AttackBoard.update(row + i, col, 'H');
 			}
 			else
 			{
-				P2Board2.update(i, col, 'M');
-				P1AttackBoard.update(i, col, 'M');
+				P2Board2.update(row + i, col, 'M');
+				P1AttackBoard.update(row + i, col, 'M');
 			}
 		}
 		col = col + 1;
-		for (int i = row; i < 10; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			if (P2Board2.checkCoordinates(i, col) == 'S')
+			if (P2Board2.checkCoordinates(row + i, col) == 'S')
 			{
-				P2Board2.update(i, col, 'H');
-				P1AttackBoard.update(i, col, 'H');
+				P2Board2.update(row + i, col, 'H');
+				P1AttackBoard.update(row + i, col, 'H');
 			}
 			else
 			{
-				P2Board2.update(i, col, 'M');
-				P1AttackBoard.update(i, col, 'M');
+				P2Board2.update(row + i, col, 'M');
+				P1AttackBoard.update(row + i, col, 'M');
 			}
 		}
 	}
 	else
 	{
-		for (int i = row; i < 10; i++)
+		for (int i = row; i < 5; i++)
 		{
-			if (P1Board1.checkCoordinates(i, col) == 'S')
+			if (P1Board1.checkCoordinates(row + i, col) == 'S')
 			{
-				P1Board1.update(i, col, 'H');
-				P2AttackBoard.update(i, col, 'H');
+				P1Board1.update(row + i, col, 'H');
+				P2AttackBoard.update(row + i, col, 'H');
 			}
 			else
 			{
-				P1Board1.update(i, col, 'M');
-				P2AttackBoard.update(i, col, 'M');
+				P1Board1.update(row + i, col, 'M');
+				P2AttackBoard.update(row + i, col, 'M');
 			}
 		}
 		col = col + 1;
-		for (int i = row; i < 10; i++)
+		for (int i = row; i < 5; i++)
 		{
-			if (P1Board1.checkCoordinates(i, col) == 'S')
+			if (P1Board1.checkCoordinates(row + i, col) == 'S')
 			{
-				P1Board1.update(i, col, 'H');
-				P2AttackBoard.update(i, col, 'H');
+				P1Board1.update(row + i, col, 'H');
+				P2AttackBoard.update(row + i, col, 'H');
 			}
 			else
 			{
-				P1Board1.update(i, col, 'M');
-				P2AttackBoard.update(i, col, 'M');
+				P1Board1.update(row + i, col, 'M');
+				P2AttackBoard.update(row + i, col, 'M');
 			}
 		}
 	}
 }
-void Executive::ringOfFireH(int row1, int row2, int player)
+void Executive::ringOfFireH(int row, int col, int player)
 {
-	cout << "test";
+	if (player == 1)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			if (P2Board2.checkCoordinates(row, i) == 'S')
+			{
+				P2Board2.update(row, col + i, 'H');
+				P1AttackBoard.update(row, col + i, 'H');
+			}
+			else
+			{
+				P2Board2.update(row, col + i, 'M');
+				P1AttackBoard.update(row, col + i, 'M');
+			}
+		}
+		row = row + 1;
+		for(int i = 0; i < 5; i++)
+		{
+			if (P2Board2.checkCoordinates(row, i) == 'S')
+			{
+				P2Board2.update(row, col + i, 'H');
+				P1AttackBoard.update(row, col + i, 'H');
+			}
+			else
+			{
+				P2Board2.update(row, col + i, 'M');
+				P1AttackBoard.update(row, col + i, 'M');
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			if (P1Board1.checkCoordinates(row, i) == 'S')
+			{
+				P1Board1.update(row, col + i, 'H');
+				P2AttackBoard.update(row, col + i, 'H');
+			}
+			else
+			{
+				P1Board1.update(row, col + i, 'M');
+				P2AttackBoard.update(row, col + i, 'M');
+			}
+		}
+		row = row + 1;
+		for (int i = 0; i < 5; i++)
+		{
+			if (P1Board1.checkCoordinates(row, col + i) == 'S')
+			{
+				P1Board1.update(row, col + i, 'H');
+				P2AttackBoard.update(row, col + i, 'H');
+			}
+			else
+			{
+				P1Board1.update(row, col + i, 'M');
+				P2AttackBoard.update(row, col + i, 'M');
+			}
+		}
+	}
 }
