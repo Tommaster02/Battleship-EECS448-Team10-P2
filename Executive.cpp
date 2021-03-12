@@ -545,48 +545,81 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 				int error1 = 0;
 				int error2 = 0;
 				int error3 = 0;
+				int error4 = 0;
+				int error5 = 0;
 
-				int row = 0;
-				int col = 0;
+				int row1 = 0;
+				int row2 = 0;
+				int col1 = 0;
+				int col2 = 0;
 				cout << "Initiate Vertical or Horizontal Ring of Fire (h/v)? ";
 				do
 				{
 					cin >> horvert;
 					if (horvert == "h")
 					{
-						cout << "Which row would you like to impact (1-10)? ";
+						cout << "Input in the first row you would like to impact (1-10)? ";
 						do
 						{
-							cin >> row;
-							while (row < 1 || row > 10)
+							cin >> row1;
+							while (row1 < 1 || row1 > 10)
 							{
 								cout << "Not a valid row" << endl;
 								cin.clear();
 								cin.ignore(1000, '\n');
-								cin >> row;
+								cin >> row1;
 							}
 							error2 = 1;
 						} while(error2 == 0);
 
-						ringOfFireH(row, 3, player);
+						cout << "Input in the second row you would like to impact (1-10)? ";
+						do
+						{
+							cin >> row2;
+							while ((row2 < 1 || row2 > 10) && (row2 != row1 + 1))
+							{
+								cout << "Not a valid row" << endl;
+								cin.clear();
+								cin.ignore(1000, '\n');
+								cin >> row2;
+							}
+							error3 = 1;
+						} while (error3 == 0);
+
+						ringOfFireH(row1, row2, player);
 
 					}
 					else if (horvert == "v")
 					{
-						cout << "Which column would you like to impact (A-J)? ";
+						cout << "Input the first column you would like to impact (A-J)? ";
 						do
 						{
-							cin >> col;
-							while (col < 'A' || col > 'J')
+							cin >> col1;
+							while (col1 < 'A' || col1 > 'J')
 							{
 								cout << "Not a valid column" << endl;
 								cin.clear();
 								cin.ignore(1000, '\n');
-								cin >> col;
+								cin >> col1;
 							}
-							error3 = 1;
-						} while(error3 == 0);
-						ringOfFireV(col, 3, player);
+							error4 = 1;
+						} while(error4 == 0);
+
+						cout << "Input the first column you would like to impact (A-J)? ";
+						do
+						{
+							cin >> col2;
+							while ((col2 < 'A' || col2 > 'J') && (col2 - col1 != 1))
+							{
+								cout << "Not a valid column" << endl;
+								cin.clear();
+								cin.ignore(1000, '\n');
+								cin >> col1;
+							}
+							error5 = 1;
+						} while (error5 == 0);
+
+						ringOfFireV(col1, col2, player);
 					}
 					else
 					{
