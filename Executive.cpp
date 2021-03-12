@@ -554,50 +554,53 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 			{
 				string horvert = "";
 				int error1 = 0;
-				int error2 = 0;
-				int error3 = 0;
 
-				int row = 0;
-				int col = 0;
+				int row1 = 0;
+				int row2 = 0;
+				int col1 = 0;
+				int col2 = 0;
 				cout << "Initiate Vertical or Horizontal Ring of Fire (h/v)? ";
 				do
 				{
 					cin >> horvert;
 					if (horvert == "h")
 					{
-						cout << "Which row would you like to impact (1-10)? ";
-						do
-						{
-							cin >> row;
-							while (row < 1 || row > 10)
-							{
-								cout << "Not a valid row" << endl;
-								cin.clear();
-								cin.ignore(1000, '\n');
-								cin >> row;
-							}
-							error2 = 1;
-						} while(error2 == 0);
+						cout << "Input in the first row you would like to impact (1-10)? ";
+						row1 = inputNumber(1, 10) - 1;
 
-						ringOfFireH(row, 3, player);
+						cout << "Input in the second row you would like to impact (1-10)? ";
+						row2 = inputNumber(1, 10) - 1;
+						while (row2 - row1 != 1 && row2 - row1 != -1)
+						{
+							cout << "Rows must be next to each other, try again" << endl;
+							cout << "Input in the first row you would like to impact (1-10)? ";
+							row1 = inputNumber(1, 10) - 1;
+
+							cout << "Input in the second row you would like to impact (1-10)? ";
+							row2 = inputNumber(1, 10) - 1;
+						}
+
+						ringOfFireH(row1, row2, player);
 
 					}
 					else if (horvert == "v")
 					{
-						cout << "Which column would you like to impact (A-J)? ";
-						do
+						cout << "Input in the first column you would like to impact (1-10)? ";
+						col1 = inputAlphabet(1, 10) - 1;
+
+						cout << "Input in the second column you would like to impact (1-10)? ";
+						col2 = inputAlphabet(1, 10) - 1;
+						while (col2 - col1 != 1 && col2 - col1 != -1)
 						{
-							cin >> col;
-							while (col < 'A' || col > 'J')
-							{
-								cout << "Not a valid column" << endl;
-								cin.clear();
-								cin.ignore(1000, '\n');
-								cin >> col;
-							}
-							error3 = 1;
-						} while(error3 == 0);
-						ringOfFireV(col, 3, player);
+							cout << "Columns must be next to each other, try again" << endl;
+							cout << "Input in the first column you would like to impact (1-10)? ";
+							col1 = inputAlphabet(1, 10) - 1;
+
+							cout << "Input in the second column you would like to impact (1-10)? ";
+							col2 = inputAlphabet(1, 10) - 1;
+						}
+
+						ringOfFireV(col1, col2, player);
 					}
 					else
 					{
