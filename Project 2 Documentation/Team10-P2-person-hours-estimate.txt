@@ -1,0 +1,30 @@
+Initial Estimate of Project 1:
+
+(72 hours) by our 4 team members (est. 15 hours per person) as well as 3 meetings that last 1 hr throughout the project (12 hours total)
+(60 + 12 = 72) needed to accomplish a significant amount of goals:
+
+Creating repository and getting git set up on all devices, figuring out a method of communication for our group, meeting
+to discuss where we are at on the project, fixing current bugs brought over by the last team, understanding the 2 classes we 
+have for this project (board, executive), creating documentation both on the header files and making the html file, filling out
+personal hours documentation, and doing the design paradigm essay. We have to create the three AI systems, and add the extra feature
+in which we plan to make extra special attacks that can be used once per game. Extra hours also included for anticipated confusion on
+project as well as checking and preparing our project for submission. 
+
+We anticipate doing all of this will take roughly 18 hours a person to be safe as a lot of code and planning has to be done for
+this project.
+
+
+Final Hours of Project 1 ():
+
+We found that the project took a lot less time than we thought as we were relatively efficient with our coding and planning.
+In the future, we hope to be faster with our planning and coding as well as improve our communication skills and make sure the
+team is working an even amount of hours as there was quite an unbalance in the hours our team contributed. Unfortunately, these
+are the same problems our team ran into during project 1.
+
+ 
+
+
+
+
+
+
