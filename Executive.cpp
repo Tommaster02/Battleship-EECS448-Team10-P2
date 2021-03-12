@@ -1682,15 +1682,15 @@ void Executive::shotgun(int player)
 				{
 					P1Board1.update(row - i, col, 'H');
 					P2AttackBoard.update(row - i, col, 'H');
-					if (P2Board2.isSunk(row - i, col))
+					if (P1Board1.isSunk(row - i, col))
 					{
-						P2Board2.sinkShip();
+						P1Board1.sinkShip();
 						cout << "You have sunk a ship!\n";
 					}
 
-					if (P2Board2.getShipsLeft() == 0)
+					if (P1Board1.getShipsLeft() == 0)
 					{
-						player1Won = true;
+						player2Won = true;
 					}
 				}
 				else
@@ -1706,15 +1706,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col + 1, 'H');
 							P2AttackBoard.update(row - i, col + 1, 'H');
-							if (P2Board2.isSunk(row - i, col + 1))
+							if (P1Board1.isSunk(row - i, col + 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1729,15 +1729,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col - 1, 'H');
 							P2AttackBoard.update(row - i, col - 1, 'H');
-							if (P2Board2.isSunk(row - i, col - 1))
+							if (P1Board1.isSunk(row - i, col - 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1755,15 +1755,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col + 1, 'H');
 							P2AttackBoard.update(row - i, col + 1, 'H');
-							if (P2Board2.isSunk(row - i, col + 1))
+							if (P1Board1.isSunk(row - i, col + 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1778,15 +1778,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col - 1, 'H');
 							P2AttackBoard.update(row - i, col - 1, 'H');
-							if (P2Board2.isSunk(row - i, col - 1))
+							if (P1Board1.isSunk(row - i, col - 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1801,15 +1801,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col + 2, 'H');
 							P2AttackBoard.update(row - i, col + 2, 'H');
-							if (P2Board2.isSunk(row - i, col + 2))
+							if (P1Board1.isSunk(row - i, col + 2))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1824,15 +1824,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col - 2, 'H');
 							P2AttackBoard.update(row - i, col - 2, 'H');
-							if (P2Board2.isSunk(row - i, col - 2))
+							if (P1Board1.isSunk(row - i, col - 2))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1854,15 +1854,15 @@ void Executive::shotgun(int player)
 				{
 					P1Board1.update(row, col + i, 'H');
 					P2AttackBoard.update(row, col + i, 'H');
-					if (P2Board2.isSunk(row, col + i))
+					if (P1Board1.isSunk(row, col + i))
 					{
-						P2Board2.sinkShip();
+						P1Board1.sinkShip();
 						cout << "You have sunk a ship!\n";
 					}
 
-					if (P2Board2.getShipsLeft() == 0)
+					if (P1Board1.getShipsLeft() == 0)
 					{
-						player1Won = true;
+						player2Won = true;
 					}
 				}
 				else
@@ -1878,15 +1878,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 1, col + i, 'H');
 							P2AttackBoard.update(row + 1, col + i, 'H');
-							if (P2Board2.isSunk(row + 1, col + i))
+							if (P1Board1.isSunk(row + 1, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1901,15 +1901,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 1, col + i, 'H');
 							P2AttackBoard.update(row - 1, col + i, 'H');
-							if (P2Board2.isSunk(row - 1, col + i))
+							if (P1Board1.isSunk(row - 1, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1927,15 +1927,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 1, col + i, 'H');
 							P2AttackBoard.update(row + 1, col + i, 'H');
-							if (P2Board2.isSunk(row + 1, col + i))
+							if (P1Board1.isSunk(row + 1, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1950,15 +1950,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 1, col + i, 'H');
 							P2AttackBoard.update(row - 1, col + i, 'H');
-							if (P2Board2.isSunk(row - 1, col + i))
+							if (P1Board1.isSunk(row - 1, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1973,15 +1973,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 2, col + i, 'H');
 							P2AttackBoard.update(row + 2, col + i, 'H');
-							if (P2Board2.isSunk(row + 3, col + i))
+							if (P1Board1.isSunk(row + 3, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -1996,15 +1996,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 2, col + i, 'H');
 							P2AttackBoard.update(row - 2, col + i, 'H');
-							if (P2Board2.isSunk(row - 2, col + i))
+							if (P1Board1.isSunk(row - 2, col + i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2026,13 +2026,13 @@ void Executive::shotgun(int player)
 				{
 					P1Board1.update(row + i, col, 'H');
 					P2AttackBoard.update(row + i, col, 'H');
-					if (P2Board2.isSunk(row + i, col))
+					if (P1Board1.isSunk(row + i, col))
 					{
-						P2Board2.sinkShip();
+						P1Board1.sinkShip();
 						cout << "You have sunk a ship!\n";
 					}
 
-					if (P2Board2.getShipsLeft() == 0)
+					if (P1Board1.getShipsLeft() == 0)
 					{
 						player1Won = true;
 					}
@@ -2050,15 +2050,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + i, col + 1, 'H');
 							P2AttackBoard.update(row + i, col + 1, 'H');
-							if (P2Board2.isSunk(row + i, col + 1))
+							if (P1Board1.isSunk(row + i, col + 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2073,15 +2073,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + i, col - 1, 'H');
 							P2AttackBoard.update(row + i, col - 1, 'H');
-							if (P2Board2.isSunk(row + i, col - 1))
+							if (P1Board1.isSunk(row + i, col - 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2099,15 +2099,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + i, col + 1, 'H');
 							P2AttackBoard.update(row + i, col + 1, 'H');
-							if (P2Board2.isSunk(row + i, col + 1))
+							if (P1Board1.isSunk(row + i, col + 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2122,15 +2122,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + i, col - 1, 'H');
 							P2AttackBoard.update(row + i, col - 1, 'H');
-							if (P2Board2.isSunk(row + i, col - 1))
+							if (P1Board1.isSunk(row + i, col - 1))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2145,15 +2145,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + i, col + 2, 'H');
 							P2AttackBoard.update(row + i, col + 2, 'H');
-							if (P2Board2.isSunk(row + i, col + 2))
+							if (P1Board1.isSunk(row + i, col + 2))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2168,15 +2168,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - i, col + 2, 'H');
 							P2AttackBoard.update(row + i, col - 2, 'H');
-							if (P2Board2.isSunk(row + i, col - 2))
+							if (P1Board1.isSunk(row + i, col - 2))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2198,15 +2198,15 @@ void Executive::shotgun(int player)
 				{
 					P1Board1.update(row, col - i, 'H');
 					P2AttackBoard.update(row, col - i, 'H');
-					if (P2Board2.isSunk(row, col - i))
+					if (P1Board1.isSunk(row, col - i))
 					{
-						P2Board2.sinkShip();
+						P1Board1.sinkShip();
 						cout << "You have sunk a ship!\n";
 					}
 
-					if (P2Board2.getShipsLeft() == 0)
+					if (P1Board1.getShipsLeft() == 0)
 					{
-						player1Won = true;
+						player2Won = true;
 					}
 				}
 				else
@@ -2222,15 +2222,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 1, col - i, 'H');
 							P2AttackBoard.update(row + 1, col - i, 'H');
-							if (P2Board2.isSunk(row + 1, col - i))
+							if (P1Board1.isSunk(row + 1, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2245,15 +2245,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 1, col - i, 'H');
 							P2AttackBoard.update(row - 1, col - i, 'H');
-							if (P2Board2.isSunk(row - 1, col - i))
+							if (P1Board1.isSunk(row - 1, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2271,15 +2271,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 1, col - i, 'H');
 							P2AttackBoard.update(row + 1, col - i, 'H');
-							if (P2Board2.isSunk(row + 1, col - i))
+							if (P1Board1.isSunk(row + 1, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2294,15 +2294,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 1, col - i, 'H');
 							P2AttackBoard.update(row - 1, col - i, 'H');
-							if (P2Board2.isSunk(row - 1, col - i))
+							if (P1Board1.isSunk(row - 1, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2317,15 +2317,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row + 2, col - i, 'H');
 							P2AttackBoard.update(row + 2, col - i, 'H');
-							if (P2Board2.isSunk(row + 2, col - i))
+							if (P1Board1.isSunk(row + 2, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2340,15 +2340,15 @@ void Executive::shotgun(int player)
 						{
 							P1Board1.update(row - 2, col - i, 'H');
 							P2AttackBoard.update(row - 2, col - i, 'H');
-							if (P2Board2.isSunk(row - 2, col - i))
+							if (P1Board1.isSunk(row - 2, col - i))
 							{
-								P2Board2.sinkShip();
+								P1Board1.sinkShip();
 								cout << "You have sunk a ship!\n";
 							}
 
-							if (P2Board2.getShipsLeft() == 0)
+							if (P1Board1.getShipsLeft() == 0)
 							{
-								player1Won = true;
+								player2Won = true;
 							}
 						}
 						else
@@ -2425,15 +2425,15 @@ void Executive::ringOfFireV(int row, int col, int player)
 			{
 				P1Board1.update(row + i, col, 'H');
 				P2AttackBoard.update(row + i, col, 'H');
-				if (P2Board2.isSunk(row + i, col))
+				if (P1Board1.isSunk(row + i, col))
 				{
-					P2Board2.sinkShip();
+					P1Board1.sinkShip();
 					cout << "You have sunk a ship!\n";
 				}
 
-				if (P2Board2.getShipsLeft() == 0)
+				if (P1Board1.getShipsLeft() == 0)
 				{
-					player1Won = true;
+					player2Won = true;
 				}
 			}
 			else
@@ -2449,15 +2449,15 @@ void Executive::ringOfFireV(int row, int col, int player)
 			{
 				P1Board1.update(row + i, col, 'H');
 				P2AttackBoard.update(row + i, col, 'H');
-				if (P2Board2.isSunk(row + i, col))
+				if (P1Board1.isSunk(row + i, col))
 				{
-					P2Board2.sinkShip();
+					P1Board1.sinkShip();
 					cout << "You have sunk a ship!\n";
 				}
 
-				if (P2Board2.getShipsLeft() == 0)
+				if (P1Board1.getShipsLeft() == 0)
 				{
-					player1Won = true;
+					player2Won = true;
 				}
 			}
 			else
@@ -2528,15 +2528,15 @@ void Executive::ringOfFireH(int row, int col, int player)
 			{
 				P1Board1.update(row, col + i, 'H');
 				P2AttackBoard.update(row, col + i, 'H');
-				if (P2Board2.isSunk(row, col + i))
+				if (P1Board1.isSunk(row, col + i))
 				{
-					P2Board2.sinkShip();
+					P1Board1.sinkShip();
 					cout << "You have sunk a ship!\n";
 				}
 
-				if (P2Board2.getShipsLeft() == 0)
+				if (P1Board1.getShipsLeft() == 0)
 				{
-					player1Won = true;
+					player2Won = true;
 				}
 			}
 			else
@@ -2552,15 +2552,15 @@ void Executive::ringOfFireH(int row, int col, int player)
 			{
 				P1Board1.update(row, col + i, 'H');
 				P2AttackBoard.update(row, col + i, 'H');
-				if (P2Board2.isSunk(row, col + i))
+				if (P1Board1.isSunk(row, col + i))
 				{
-					P2Board2.sinkShip();
+					P1Board1.sinkShip();
 					cout << "You have sunk a ship!\n";
 				}
 
-				if (P2Board2.getShipsLeft() == 0)
+				if (P1Board1.getShipsLeft() == 0)
 				{
-					player1Won = true;
+					player2Won = true;
 				}
 			}
 			else
