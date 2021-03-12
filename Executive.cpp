@@ -544,52 +544,33 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 				string horvert = "";
 				int error1 = 0;
 
-				int row1 = 0;
-				int row2 = 0;
-				int col1 = 0;
-				int col2 = 0;
+				int row = 0;
+				int col = 0;
+				cout << "You will enter in the top right hand corner of the box you would like to attack." << endl;
 				cout << "Initiate Vertical or Horizontal Ring of Fire (h/v)? ";
 				do
 				{
 					cin >> horvert;
 					if (horvert == "h")
 					{
-						cout << "Input in the first row you would like to impact (1-10)? ";
-						row1 = inputNumber(1, 10) - 1;
+						cout << "Input in the row you would like the top right hand corner to be (1-10) ";
+						row = inputNumber(1, 10) - 1;
 
-						cout << "Input in the second row you would like to impact (1-10)? ";
-						row2 = inputNumber(1, 10) - 1;
-						while (row2 - row1 != 1 && row2 - row1 != -1)
-						{
-							cout << "Rows must be next to each other, try again" << endl;
-							cout << "Input in the first row you would like to impact (1-10)? ";
-							row1 = inputNumber(1, 10) - 1;
+						cout << "Input in the column you would like the top right hand column to be (A-J) ";
+						col = inputAlphabet(1, 10) - 1;
 
-							cout << "Input in the second row you would like to impact (1-10)? ";
-							row2 = inputNumber(1, 10) - 1;
-						}
-
-						ringOfFireH(row1, row2, player);
+						ringOfFireH(row, col, player);
 
 					}
 					else if (horvert == "v")
 					{
-						cout << "Input in the first column you would like to impact (1-10)? ";
-						col1 = inputAlphabet(1, 10) - 1;
+						cout << "Input in the row you would like the top right hand corner to be (1-10) ";
+						row = inputNumber(1, 10) - 1;
 
-						cout << "Input in the second column you would like to impact (1-10)? ";
-						col2 = inputAlphabet(1, 10) - 1;
-						while (col2 - col1 != 1 && col2 - col1 != -1)
-						{
-							cout << "Columns must be next to each other, try again" << endl;
-							cout << "Input in the first column you would like to impact (1-10)? ";
-							col1 = inputAlphabet(1, 10) - 1;
+						cout << "Input in the column you would like the top right hand column to be (A-J) ";
+						col = inputAlphabet(1, 10) - 1;
 
-							cout << "Input in the second column you would like to impact (1-10)? ";
-							col2 = inputAlphabet(1, 10) - 1;
-						}
-
-						ringOfFireV(col1, col2, player);
+						ringOfFireV(row, col, player);
 					}
 					else
 					{
@@ -1747,9 +1728,68 @@ void Executive::shotgun(int player)
 	}
 }
 
-void Executive::ringOfFireV(int col1, int col2, int player)
+void Executive::ringOfFireV(int row, int col, int player)
 {
-	cout << "test";
+	if (player == 1)
+	{
+		for (int i = row; i < 10; i++)
+		{
+			if (P2Board2.checkCoordinates(i, col) == 'S')
+			{
+				P2Board2.update(i, col, 'H');
+				P1AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P2Board2.update(i, col, 'M');
+				P1AttackBoard.update(i, col, 'M');
+			}
+		}
+		col = col + 1;
+		for (int i = row; i < 10; i++)
+		{
+			if (P2Board2.checkCoordinates(i, col) == 'S')
+			{
+				P2Board2.update(i, col, 'H');
+				P1AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P2Board2.update(i, col, 'M');
+				P1AttackBoard.update(i, col, 'M');
+			}
+		}
+	}
+	else
+	{
+		for (int i = row; i < 10; i++)
+		{
+			if (P1Board1.checkCoordinates(i, col) == 'S')
+			{
+				P1Board1.update(i, col, 'H');
+				P2AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P1Board1.update(i, col, 'M');
+				P2AttackBoard.update(i, col, 'M');
+			}
+		}
+		col = col + 1;
+		for (int i = row; i < 10; i++)
+		{
+			if (P1Board1.checkCoordinates(i, col) == 'S')
+			{
+				P1Board1.update(i, col, 'H');
+				P2AttackBoard.update(i, col, 'H');
+			}
+			else
+			{
+				P1Board1.update(i, col, 'M');
+				P2AttackBoard.update(i, col, 'M');
+			}
+		}
+	}
 }
 void Executive::ringOfFireH(int row1, int row2, int player)
 {
