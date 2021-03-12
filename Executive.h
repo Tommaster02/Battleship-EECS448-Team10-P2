@@ -113,9 +113,16 @@ public:
 	  **/
 	vector<vector<pair<int, int>>> cheatGet();
 
-	void LaserH(int row); //Horizontal Laser attack
-	void LaserV(int col); //Vertical Laser attack
+	/**
+	  * Prompts the user if they want to use their special shot
+	  *
+	  * @parm int - Gives the leader code that the user chose.
+	  * @parm bool - The check if the user has used their ability yet.
+	  * @parm int - Gives the player calling the attacks.
+	  * @return bool - Returns true if the user has used their ability.
+	  **/
 	bool AbilityPrompt(int leader, bool abilityused, int player);
+
 	/**
 	  * Hits the opponent board with a laser that hits a whole row.
 	  *
@@ -153,12 +160,22 @@ public:
 	/**
 	  * Hits the opponent board with 5x2 rectangle attack.
 	  *
+	  * @parm int - Gives the row that the user wants the top right corner to be
+	  * @parm int - Gives the col that the user wants the top right corner to be
 	  * @parm int - Gives the player that used the attack
 	  * @return Nothing
 	  **/
+	void ringOfFireH(int row, int col, int player);
 
-	void ringOfFireH(int row1, int row2, int player);
-	void ringOfFireV(int col1, int col2, int player);
+	/**
+	  * Hits the opponent board with 2x5 rectangle attack.
+	  *
+	  * @parm int - Gives the row that the user wants the top right corner to be
+	  * @parm int - Gives the col that the user wants the top right corner to be
+	  * @parm int - Gives the player that used the attack
+	  * @return Nothing
+	  **/
+	void ringOfFireV(int row, int col, int player);
 	void clrscn();
 };
 #endif
