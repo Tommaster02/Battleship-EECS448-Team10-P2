@@ -188,38 +188,69 @@ void SpecialGame()
 	cout << "3) Captain Wilhelm\n";
 	cout << "4) Commander Tom\n";
 
-
-	do
-	{
-		cin >> leader;
-		if (leader == 1)
+	// while (true) {
+	// 	cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
+	// 	if (cin >> shipNum)
+	// 	{
+	// 		if (shipNum < 7 && shipNum > 0)
+	// 		{
+	// 			break;
+	// 		}
+	// 		else
+	// 		{
+	// 			cout << "The input range is not valid!\n";
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		cout << "input not a number!" << endl;
+	// 		cin.clear();
+	// 		cin.ignore(1000, '\n');
+	// 	}
+	// }
+	while (true) {
+		if (cin >> leader)
 		{
-			cout << "You selected Admiral Ankeey!\n\n Special ability: ";
-			cout << "Laser";
-		}
-		else if (leader == 2)
-		{
-			cout << "You selected Battleship Brandon!\n\n Special ability: ";
-			cout << "Shotgun";
-		}
-		else if (leader == 3)
-		{
-			cout << "You selected Captain Wilhelm!\n\n Special ability: ";
-			cout << "Rain of Death";
-		}
-		else if (leader == 4)
-		{
-			cout << "You selected Commander Tom!\n\n Special ability: ";
-			cout << "Ring of Fire";
+			if (leader < 5 && leader > 0)
+			{
+				break;
+			}
+			else
+			{
+				cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			}
 		}
 		else
 		{
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
 			cin.clear();
 			cin.ignore(1000, '\n');
-			error2 = 1;
+			// error2 = 1;
 		}
-	} while (error2 == 1);
+	}
+
+	if (leader == 1)
+	{
+		cout << "You selected Admiral Ankeey!\n\n Special ability: ";
+		cout << "Laser";
+	}
+	else if (leader == 2)
+	{
+		cout << "You selected Battleship Brandon!\n\n Special ability: ";
+		cout << "Shotgun";
+	}
+	else if (leader == 3)
+	{
+		cout << "You selected Captain Wilhelm!\n\n Special ability: ";
+		cout << "Rain of Death";
+	}
+	else if (leader == 4)
+	{
+		cout << "You selected Commander Tom!\n\n Special ability: ";
+		cout << "Ring of Fire";
+	}
+
+
 	cout << endl << "-----------------------------------------\n\n\n\n\n";
 
 
@@ -230,37 +261,47 @@ void SpecialGame()
 	cout << "3) Captain Wilhelm\n";
 	cout << "4) Commander Tom\n";
 
-	do
-	{
-		cin >> leader2;
-		if (leader2 == 1)
+	while (true) {
+		if (cin >> leader2)
 		{
-			cout << "You selected Admiral Ankeey!\n\n Special ability: ";
-			cout << "Laser";
-		}
-		else if (leader2 == 2)
-		{
-			cout << "You selected Battleship Brandon!\n\n Special ability: ";
-			cout << "Shotgun";
-		}
-		else if (leader2 == 3)
-		{
-			cout << "You selected Captain Wilhelm!\n\n Special ability: ";
-			cout << "Rain of Death";
-		}
-		else if (leader2 == 4)
-		{
-			cout << "You selected Commander Tom!\n\n Special ability: ";
-			cout << "Ring of Fire";
+			if (leader2 < 5 && leader2 > 0)
+			{
+				break;
+			}
+			else
+			{
+				cout << "Not a valid choice! Please insert an integer (1-4)\n";
+			}
 		}
 		else
 		{
 			cout << "Not a valid choice! Please insert an integer (1-4)\n";
 			cin.clear();
 			cin.ignore(1000, '\n');
-			error2 = 1;
+			// error2 = 1;
 		}
-	} while (error2 == 1);
+	}
+
+	if (leader2 == 1)
+	{
+		cout << "You selected Admiral Ankeey!\n\n Special ability: ";
+		cout << "Laser";
+	}
+	else if (leader2 == 2)
+	{
+		cout << "You selected Battleship Brandon!\n\n Special ability: ";
+		cout << "Shotgun";
+	}
+	else if (leader2 == 3)
+	{
+		cout << "You selected Captain Wilhelm!\n\n Special ability: ";
+		cout << "Rain of Death";
+	}
+	else if (leader2 == 4)
+	{
+		cout << "You selected Commander Tom!\n\n Special ability: ";
+		cout << "Ring of Fire";
+	}
 	cout << endl << "-----------------------------------------\n\n\n\n\n";
 
 	int shipNum = 0;
