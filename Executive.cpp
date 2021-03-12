@@ -514,19 +514,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						if (horvert == "h")
 						{
 							cout << "Which row would you like to impact? ";
-							do
-							{
-								cin >> row;
-								// CHECK FOR VALID Row
-								while (row < 1 || row > 10)
-								{
-									cout << "Not a valid row" << endl;
-									cin.clear();
-									cin.ignore(1000, '\n');
-									cin >> row;
-								}
-								error2 = 1;
-							} while(error2 == 0);
+							row = inputNumber(1, 10);
 
 							LaserH(row, player);
 
@@ -534,18 +522,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 						else if (horvert == "v")
 						{
 							cout << "Which column would you like to impact? ";
-							do
-							{
-								cin >> col;
-								while (col < 'A' || col > 'J')
-								{
-									cout << "Not a valid column" << endl;
-									cin.clear();
-									cin.ignore(1000, '\n');
-									cin >> col;
-								}
-								error3 = 1;
-							} while(error3 == 0);
+							col = inputAlphabet('A', 'J');
 							LaserV(col, player);
 						}
 						else
