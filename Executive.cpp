@@ -150,6 +150,7 @@ void Executive::P1Attack(int mode, int leader, int turn, bool& abilityused)
 {
 	int row;
 	int col;
+	bool preuse = abilityused;
 	bool attack = true;
 	cout << "\n----------------------------------------\n";
 	cout << "           --Player 1 board--             \n";
@@ -166,50 +167,54 @@ void Executive::P1Attack(int mode, int leader, int turn, bool& abilityused)
 		{
 		abilityused = AbilityPrompt(leader, abilityused, 1);
 		}
-		cout << "Select Row number: ";
-
-		row = inputNumber(1, 10);
-
-		cout << "\nSelect Column letter: ";
-
-		col = inputAlphabet('A', 'J');
-
-		cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
-		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+		if (preuse == abilityused)
 		{
-			cout << "You have already hit or miss here! Choose a new coordinate \n";
-			continue;
-		}
-		else if (P2Board2.checkCoordinates(row - 1, col - 1) == 'S')
-		{
-			cout << "You hit a ship!\n";
-			P1AttackBoard.update(row - 1, col - 1, 'H');
-			P2Board2.update(row - 1, col - 1, 'H');
-			if (P2Board2.isSunk(row - 1, col - 1))
+			cout << "Select Row number: ";
+
+			row = inputNumber(1, 10);
+
+			cout << "\nSelect Column letter: ";
+
+			col = inputAlphabet('A', 'J');
+
+			cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
+			if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 			{
-				P2Board2.sinkShip();
-				cout << "You have sunk a ship!\n";
+				cout << "You have already hit or miss here! Choose a new coordinate \n";
+				continue;
+			}
+			else if (P2Board2.checkCoordinates(row - 1, col - 1) == 'S')
+			{
+				cout << "You hit a ship!\n";
+				P1AttackBoard.update(row - 1, col - 1, 'H');
+				P2Board2.update(row - 1, col - 1, 'H');
+				if (P2Board2.isSunk(row - 1, col - 1))
+				{
+					P2Board2.sinkShip();
+					cout << "You have sunk a ship!\n";
+				}
+
+				if (P2Board2.getShipsLeft() == 0)
+				{
+					player1Won = true;
+				}
+			}
+			else
+			{
+				P1AttackBoard.update(row - 1, col - 1, 'M');
+				cout << "You missed!\n";
 			}
 
-			if (P2Board2.getShipsLeft() == 0)
-			{
-				player1Won = true;
-			}
+			cout << "\n----------------------------------------\n";
+			cout << "--This is location of your own ships--\n";
+			P1Board1.printBoard();
+			cout << "\n\n--This is what you attacked--\n";
+			P1AttackBoard.printBoard();
+			cout << "\n----------------------------------------\n";
+			attack = false;
+			cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		}
-		else
-		{
-			P1AttackBoard.update(row - 1, col - 1, 'M');
-			cout << "You missed!\n";
-		}
-
-		cout << "\n----------------------------------------\n";
-		cout << "--This is location of your own ships--\n";
-		P1Board1.printBoard();
-		cout << "\n\n--This is what you attacked--\n";
-		P1AttackBoard.printBoard();
-		cout << "\n----------------------------------------\n";
 		attack = false;
-		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	}
 }
 
@@ -217,6 +222,7 @@ void Executive::P2Attack(int mode, int leader, int turn2, bool& abilityused2)
 {
 	int row;
 	int col;
+	bool preuse = abilityused2;
 	bool attack = true;
 	cout << "\n----------------------------------------\n";
 	cout << "           --Player 2 board--             \n";
@@ -233,51 +239,56 @@ void Executive::P2Attack(int mode, int leader, int turn2, bool& abilityused2)
 		{
 		abilityused2 = AbilityPrompt(leader, abilityused2, 2);
 		}
-		cout << "Select Row number: ";
 
-
-		row = inputNumber(1, 10);
-
-		cout << "\nSelect Column letter: ";
-
-		col = inputAlphabet('A', 'J');
-
-		cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
-		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
+		if (preuse == abilityused2)
 		{
-			cout << "You have already hit or miss here! Choose a new coordinate \n";
-			continue;
-		}
-		else if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
-		{
-			cout << "You hit a ship!\n";
-			P2AttackBoard.update(row - 1, col - 1, 'H');
-			P1Board1.update(row - 1, col - 1, 'H');
-			if (P1Board1.isSunk(row - 1, col - 1))
+			cout << "Select Row number: ";
+
+
+			row = inputNumber(1, 10);
+
+			cout << "\nSelect Column letter: ";
+
+			col = inputAlphabet('A', 'J');
+
+			cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
+			if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 			{
-				P1Board1.sinkShip();
-				cout << "You have sunk a ship!\n";
-
+				cout << "You have already hit or miss here! Choose a new coordinate \n";
+				continue;
 			}
-
-			if (P1Board1.getShipsLeft() == 0)
+			else if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
 			{
-				player2Won = true;
+				cout << "You hit a ship!\n";
+				P2AttackBoard.update(row - 1, col - 1, 'H');
+				P1Board1.update(row - 1, col - 1, 'H');
+				if (P1Board1.isSunk(row - 1, col - 1))
+				{
+					P1Board1.sinkShip();
+					cout << "You have sunk a ship!\n";
+
+				}
+
+				if (P1Board1.getShipsLeft() == 0)
+				{
+					player2Won = true;
+				}
 			}
+			else
+			{
+				P2AttackBoard.update(row - 1, col - 1, 'M');
+				cout << "You missed!\n";
+			}
+			cout << "\n----------------------------------------\n";
+			cout << "--This is location of your own ships--\n";
+			P2Board2.printBoard();
+			cout << "\n\n--This is what you attacked--\n";
+			P2AttackBoard.printBoard();
+			cout << "\n----------------------------------------\n";
+			attack = false;
+			cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		}
-		else
-		{
-			P2AttackBoard.update(row - 1, col - 1, 'M');
-			cout << "You missed!\n";
-		}
-		cout << "\n----------------------------------------\n";
-		cout << "--This is location of your own ships--\n";
-		P2Board2.printBoard();
-		cout << "\n\n--This is what you attacked--\n";
-		P2AttackBoard.printBoard();
-		cout << "\n----------------------------------------\n";
 		attack = false;
-		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	}
 }
 
