@@ -282,7 +282,7 @@ void SpecialGame()
 		{
 			cout << "input not a number!" << endl;
 			cin.clear();
-			cin.ignore();
+			cin.ignore(1000, '\n');
 		}
 	}
 	cout << "\nThe number of ships are: " << shipNum << "\n\n";
@@ -415,6 +415,7 @@ void PrintMenu()
 		else if (choice == 4)
 		{
 			Rules();
+			PrintMenu();
 		}
 		else if (choice < 1 || choice > 4)
 		{
