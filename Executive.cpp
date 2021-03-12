@@ -288,7 +288,7 @@ void Executive::P2Attack(int mode, int leader, int turn2, bool& abilityused2)
 			attack = false;
 			cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		}
-		attack = false;	
+		attack = false;
 	}
 }
 
