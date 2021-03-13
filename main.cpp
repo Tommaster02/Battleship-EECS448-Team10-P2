@@ -3,8 +3,8 @@
 #include <string>
 #include "Executive.h"
 #include "Board.h"
-using namespace std;
 
+using namespace std;
 
 void TwoPlayerGame()
 {
@@ -51,7 +51,6 @@ void TwoPlayerGame()
 			cout << "\n----------------------------------------\n";
 			break;
 		}
-
 		e1.P2Attack(mode, leader, turn2, abilityused2);
 		if (e1.P2Won())
 		{
@@ -402,7 +401,6 @@ void Rules()
 		}
 	} while (error0 == 1);
 }
-
 
 void PrintMenu()
 {

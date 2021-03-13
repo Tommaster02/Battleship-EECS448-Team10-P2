@@ -351,7 +351,6 @@ int Executive::inputAlphabet(char begin, char end) {
 	return (v - begin) + 1;
 }
 
-
 void Executive::AIPlacement()
 {
 	bool placing = true;
@@ -455,6 +454,7 @@ void Executive::LaserH(int row, int player)
 		}
 	}
 }
+
 void Executive::LaserV(int col, int player)
 {
 	if (player == 1)
@@ -652,7 +652,7 @@ bool Executive::AbilityPrompt(int leader, bool abilityused, int player)
 }
 
 void Executive::clrscn() {
-	;
+	std::cout << "\x1b[2J";
 }
 
 Point Executive::AIAttack(int difficulty, Point previous, vector<vector<pair<int, int>>> cheat, int& ship, int& hit)
@@ -2468,6 +2468,7 @@ void Executive::ringOfFireV(int row, int col, int player)
 		}
 	}
 }
+
 void Executive::ringOfFireH(int row, int col, int player)
 {
 	if (player == 1)

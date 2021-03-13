@@ -13,7 +13,6 @@ Board::Board()
 	}
 }
 
-
 void Board::setShipNum(int num)
 {
 	m_shipNum = num;
