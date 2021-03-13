@@ -18,9 +18,13 @@ Ankeey Prasai:
 
 Brandon Lefert:
 2/28: 1 hr - group pre-planning meeting
-3/8: 1 hr - Group half-way meeting 
-
- hr total
+3/3: 2.75 hr - Worked on AI placement for their ships
+3/5: 3 hr - Finished AI placement and finished easy mode
+3/7: 5 hr - Finished medium mode and started hardest difficulty
+3/8: 1 hr - Group half-way meeting
+3/8: 4.5 hr - Finished hardest mode and started special shots
+3/11: 3 hr - Worked on special game to get shots done
+20.25 hr total
 
 Hu Tang:
 
