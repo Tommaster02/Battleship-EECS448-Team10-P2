@@ -1,0 +1,14 @@
+Team 10 Project 2 Design Paradigm Analysis for Previous Team on Project 1
+
+The team that we were assigned to revise their project for our 2nd assignment worked their project in a similar way to how we did ours in project one.
+Both of our teams used C++ for our programming language and relied off Object-Oriented Design. I know that the previous team used this design as it is
+ heavily dependent off objects, the classes that make them, and the methods specific to those classes. They set up two main classes that interact with main.cpp:
+ the Board class and the Executive class. No inheritance classes were set up, but it isn’t a requirement for this type of design as well as it wasn’t exactly
+ necessary for what we were doing. For class structure, there is an example we can see in their executive.h file, which is part of their executive class.
+ They created a private member/attribute in which they created 4 object instances of the class Board. These 4 Boards instances have their own separate
+ methods defined in board.cpp such as checkForShips(…),  setShipsVector(…), isSunk(…), etc. Those methods carry their own parameters needed for their
+ arguments that it can get from the private members within that class such as “int shipsLeft” which tracks how many ships still have not been sunk or
+ “m_shipNum” which tracks how many ships each player has.  The functions of the program runs through these defined objects and the methods that those 
+objects can access. Without instances of the objects they created, their program would not work and therefore is dependent on object-orientated design.
+ It makes sense as C++ is a coding language that uses a lot of this concept and it is easy to follow/understand. If this was a different language such
+ as C or Haskell, it could have been function-oriented design or aspect-oriented design if they were focusing more on documentation. 
